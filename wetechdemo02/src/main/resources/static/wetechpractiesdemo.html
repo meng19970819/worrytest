@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script type="text/javascript" src="Jquery.js"></script>
+  <style>
+    body {
+      margin: 0px;
+      padding: 0px;
+      background-image: url('123.jpg');
+    }
+    .header{
+      /*大小*/
+      font-size: 22px;
+      /*中心合わせ*/
+      text-align: center;
+
+      /*境界*/
+      margin:50px auto;
+    }
+    .system{
+      /*行内块*/
+      display: inline-block;
+      width: 300px;
+      text-align: right;
+    }
+    .user{
+      display: inline-block;
+      width: 300px;
+      /*position: relative 是 CSS 中的一个定位属性，它表示元素的相对定位。
+      当元素设置为相对定位时，它会相对于其原本的位置进行定位，并可以使用 top、bottom、left、right 属性
+      来调整它的位置。*/
+      position: relative;
+    }
+    .before{
+      position: absolute;
+      width: 200px;
+    }
+    /*下拉标签尺寸ドロップダウン ラベル サイズ*/
+    select {
+      display: inline-block;
+      width: 500px;
+      height: 30px;
+    }
+    p{
+      font-size: small;
+      text-align:left;
+      display: block;
+      padding: 3px 250px;
+    }
+    .submit{
+      text-align: center;
+
+    }
+    .button{
+      width: 100px;
+      height: 30px;
+      line-height: 15px;
+      background: #99FF33;
+      color: #ffffff;
+      font-size: 13px;
+      border-radius: 13px;
+      text-align: center;
+      border: none;
+    }
+    span{
+      color: red;
+      font-size: 15px;
+    }
+
+  </style>
+</head>
+<body>
+
+<!--表のタイトル-->
+<div class="header">
+  <h2>基本情報</h2>
+</div>
+<!--フォーム内容-->
+<form class="form" id="form-save">
+  <!--姓(漢字)-->
+  <label class="system" >姓(漢字) </label>
+  <div class="user">
+    <input type="text" name="sei" id="sei" placeholder="漢字で入力してください" >
+    <span class="before" id="beforesei"></span>
+  </div>
+  <!--名(漢字)-->
+  <label class="system">名(漢字)</label>
+  <div class="user">
+    <input type="text" name="mei" id="mei" placeholder="漢字で入力してください">
+    <span class="before" id="beforemei"></span>
+  </div>
+  <br><br>
+  <label class="system" >セイ</label>
+  <div class="user">
+    <input type="text" name="katasei" id="katasei" placeholder="カタカナで入力してください" >
+    <span class="before" id="beforekatasei"></span>
+  </div>
+
+  <label class="system" >メイ</label>
+  <div class="user">
+    <input type="text" name="katamei" id="katamei" placeholder="カタカナで入力してください" >
+    <span class="before" id="beforekatamei"></span>
+  </div>
+
+  <br><br>
+
+  <label class="system" >姓(ローマ字)</label>
+  <div class="user">
+    <input type="text" name="romasei" id="romasei" placeholder="ローマ字で入力してください">
+    <span class="before" id="beforeromasei"></span>
+  </div>
+
+  <label class="system">名(ローマ字)</label>
+  <div class="user">
+    <input type="text" name="romamei" id="romamei" placeholder="ローマ字で入力してください">
+    <span class="before" id="beforeromamei"></span>
+  </div>
+  <br><br>
+
+  <label class="system">国籍</label>
+  <!--    下拉标签-->
+  <select name="country" id="country">
+    <option value="">オプションを選択してください。</option>
+    <option value="中国">中国</option>
+    <option value="日本">日本</option>
+    <option value="韓国">韓国</option>
+    <option value="スペイン">スペイン</option>
+    <option value="その他">その他</option>
+  </select>
+
+  <br>
+  <p>母語が日本語ではない方は日本語能力を証明する書類を提出していただく必要があります。詳細は募集要項をご確認ください</p>
+  <label class="system" id="nationality1" style="visibility:hidden">国籍入力</label>
+  <div class="user" >
+    <input type="text" class="user" name="nationality" id="nationality" style="visibility:hidden">
+    <span id="worrynationality"></span>
+  </div>
+  <br><br>
+  <!--性别-->
+  <label class="system">性别:</label>
+
+  <label><input type="radio" name="sex" id="sex1" value="男">男</label>
+  <label><input type="radio" name="sex" id="sex2" value="女">女</label>
+  <label><input type="radio" name="sex" id="sex3" value="Decline to State(声明拒否)">Decline to State(声明拒否)</label>
+  <br><br>
+  <!--生日年月-->
+  <label class="system">生日年月</label>
+  <div class="user">
+    <input type="date" class="user" name="birth" id="birth">
+  </div>
+  <br><br>
+  <!--電話番号-->
+  <label class="system">電話番号</label>
+  <div class="user">
+    <input type="text" class="user" name="tel" id="tel">
+    <span id="incorrecttel"></span>
+  </div>
+  <br><br>
+  <!--携帯電話-->
+  <label class="system">携帯電話</label>
+  <div class="user">
+    <input type="text" class="user" name="phone" id="phone">
+    <span id="incorrectphone"></span>
+  </div>
+
+  <br><br>
+  <!--職業-->
+  <label class="system">職業</label>
+  <select name="job" id="job">
+    <option value="">オブションを選択</option>
+    <option value="01自営業" >01 自営業</option>
+    <option value="02公務員" >02 公務員</option>
+    <option value="03会社役員" >03 会社役員</option>
+    <option value="04その他" >04 その他</option>
+    <option value="05無職" >05 無職</option>
+  </select>
+  <br><br>
+  <!--勤務先(任意)-->
+  <label class="system">勤務先(任意)</label>
+  <div class="user">
+    <input type="text" class="user" name="address" id="address">
+    <span id="incorrectaddress"></span>
+  </div>
+  <br><br>
+  <div class="submit">
+    <button type="button" class="button" id="save">基本情報保存</button>
+    <button type="button" class="button" id="next">次へ</button>
+  </div>
+</form>
+<script>
+  //获取表单输入框
+  //フォーム入力ボックスを取得する
+  let seiInput = document.getElementById('sei');
+  let meiInput= document.getElementById('mei');
+  let kataseiInput = document.getElementById('katasei');
+  let katameiInput = document.getElementById('katamei');
+  let romaseiInput = document.getElementById('romasei');
+  let romameiInput = document.getElementById('romamei');
+  let countryInput = document.getElementById('country');
+  let nationalityInput = document.getElementById('nationality');
+  let birthInput =document.getElementById('birth');
+  let telInput = document.getElementById('tel');
+  let phoneInput = document.getElementById('phone');
+  let jobInput = document.getElementById('job');
+  let addressInput = document.getElementById('address');
+  let DateInput = document.getElementById('show');
+  let saveButton = document.getElementById('save');
+  let nextButton = document.getElementById('next');
+
+
+  //addEventListener() 方法用于向指定元素添加监听事件。且同一元素目标可重复添加，
+  // 不会覆盖之前相同事件，配合 removeEventListener() 方法来移除事件。
+  saveButton.addEventListener('click', () => {
+
+    let  cpNameSei = seiInput.value.trim();
+    let cpNameMei = meiInput.value.trim();
+    let cpNameSeiKana = kataseiInput.value.trim();
+    let cpNameMeiKana = katameiInput.value.trim();
+    let cpAlphLastnmae = romaseiInput.value;
+    let cpAlphFirstname = romameiInput.value.trim();
+    let cpCountry = countryInput.options[countryInput.selectedIndex].value.trim();
+    let cpOtherCountry = nationalityInput.value.trim();
+    let gender = document.getElementsByName("sex");
+    let sexValue='';
+    for (let i = 0; i < gender.length; i++) {
+      if (gender[i].checked === true) {
+        sexValue = gender[i].value;
+      }
+    }
+    let cpSex= sexValue.trim();
+    let cpBirthDate = birthInput.value.trim();
+    let cpDenwa = telInput.value.trim();
+    let cpPhone = phoneInput.value.trim();
+    let cpShokugyoCode = jobInput.options[jobInput.selectedIndex].value.trim();
+    let cpKinmusakiName = addressInput.value.trim();
+    //let cpDatetime = DateInput;
+    //
+    //   DateInput = function(){
+    //   var myTime = new Date();
+    //   var year = myTime.getFullYear();
+    //   var month = myTime.getMonth();
+    //   var day = myTime.getDate();
+    //   var hour = myTime.getHours();
+    //   var minute = myTime.getMinutes();
+    //   var second = myTime.getSeconds();
+    //   var result= year.toString()+"年"+month.toString()+"月"+
+    //           day.toString()+"日"+hour.toString()+"时"+minute.toString()+"分"+
+    //           second.toString()+"秒";
+    //   setTimeout(result,1000);
+    //
+    //     return "";
+    // }
+
+
+
+//比如需要匹配所有中日韩非符号字符,那么正则表达式应该是^[/u3400-/u9FFF]+$
+    let check1 = /^[\u4E00-\u9FA5]+$/;
+    if(check1.test(seiInput.value)===false){
+      alert('姓を漢字で入力してください')
+      return;
+    }
+    if(seiInput.value.length>20){
+      alert('入力した姓が長すぎます。20字内で再入力してください。')
+      return;
+    }
+    if (check1.test(meiInput.value)===false){
+      alert('名を漢字で入力してください')
+      return;
+    }
+    if(meiInput.value.length>20){
+      alert('入力した名が長すぎます。20字内で再入力してください。')
+      return;
+    }
+    let check2 = /^[ｧ-ﾝﾞﾟ]+$/;
+    if(check2.test(kataseiInput.value)===false){
+      alert('セイをカタカナでで入力してください')
+      return;
+    }
+    if(kataseiInput.value.length>20){
+      alert('入力したセイが長すぎます。20字内で再入力してください。')
+      return;
+    }
+    if(check2.test(katameiInput.value)===false){
+      alert('メイをカタカナでで入力してください')
+      return;
+    }
+    if(katameiInput.value.length>20){
+      alert('入力したメイが長すぎます。20字内で再入力してください。')
+      return;
+    }
+    let check3 = /^[a-zA-Z]+$/g;
+    if(check3.test(romaseiInput.value)===false){
+      alert('姓をローマ字で入力してください')
+      return;
+    }
+    if (romaseiInput.value.length>40) {
+      alert('入力した姓が長すぎます。40字内で再入力してください。')
+      return;
+    }
+    let check9 = /^[a-zA-Z]*$/g;
+    if (check9.test(romameiInput.value)===false) {
+      alert('名をローマ字で入力してください')
+      return;
+    }
+    if(romameiInput.value.length>20){
+      alert('入力した名が長すぎます。20字内で再入力してください。')
+      return;
+    }
+    let check4 = /^\d{11}$/;
+    if (check4.test(telInput.value) === false) {
+      alert('電話番号を11個数字で入力してください。')
+      return;
+    }
+    if (check4.test(phoneInput.value) === false) {
+      alert('携帯電話を11個数字で入力してください。')
+      return;
+    }
+    if(nationalityInput.value.length > 30){
+      alert('入力した文字が長すぎます。30字内で再入力してください。')
+      return;
+    }
+    if (addressInput.value.length > 20) {
+      alert('入力した文字が長すぎます。20字内で再入力してください。')
+      return;
+    }
+    fetch('/users/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({cpNameSei,cpNameMei,cpNameSeiKana,cpNameMeiKana,cpAlphLastnmae,cpAlphFirstname,cpCountry,cpOtherCountry, cpSex, cpBirthDate, cpDenwa, cpPhone, cpShokugyoCode, cpKinmusakiName})
+    })
+            // 所有信息都正确的话就传输到数据库
+            // すべての情報が正しい場合は、データベースに転送する
+            .then(response => {
+              if (response.ok) {
+                alert('保存成功');
+
+
+              } else {
+                return response.text().then(text => {
+                  throw new Error(text)
+                });
+              }
+            })
+            // 如果存在有问题的输入, 就alert提示错误
+            // 入力に異常がある場合、エラーで警告する
+            .catch(error => {
+              alert(error.message);
+            });
+  })
+  nextButton.addEventListener('click', () => {
+    let  cpNameSei = seiInput.value.trim();
+    let cpNameMei = meiInput.value.trim();
+    let cpNameSeiKana = kataseiInput.value.trim();
+    let cpNameMeiKana = katameiInput.value.trim();
+    let cpAlphLastnmae = romaseiInput.value.trim();
+    let cpAlphFirstname = romameiInput.value.trim();
+    let cpCountry = countryInput.options[countryInput.selectedIndex].value.trim();
+    let cpOtherCountry = nationalityInput.value.trim();
+    let gender = document.getElementsByName("sex");
+    let sexValue='';
+    for (let i = 0; i < gender.length; i++) {
+      if (gender[i].checked === true) {
+        sexValue = gender[i].value;
+      }
+    }
+    let cpSex= sexValue.trim();
+    let cpBirthDate = birthInput.value.trim();
+    let cpDenwa = telInput.value.trim();
+    let cpPhone = phoneInput.value.trim();
+    let cpShokugyoCode = jobInput.options[jobInput.selectedIndex].value.trim();
+    let cpKinmusakiName = addressInput.value.trim();
+
+
+    localStorage.setItem( "cpNameSei",cpNameSei);
+    localStorage.setItem( "cpNameMei",cpNameMei);
+    localStorage.setItem( "cpPhone",cpPhone);
+    localStorage.setItem( "cpKinmusakiName",cpKinmusakiName);
+
+
+
+    let check1 = /^[\u4E00-\u9FA5]+$/;
+    if (check1.test(seiInput.value)===false) {
+      alert('姓を漢字で入力してください')
+      return;
+    }
+    if (seiInput.value.length>20) {
+      alert('入力した姓が長すぎます。20字内で再入力してください。')
+      return;
+    }
+    if (check1.test(meiInput.value)===false) {
+      alert('名を漢字で入力してください')
+      return;
+    }
+    if (meiInput.value.length>20) {
+      alert('入力した名が長すぎます。20字内で再入力してください。')
+      return;
+    }
+    let check2 = /^[ｧ-ﾝﾞﾟ]+$/;
+    if (check2.test(kataseiInput.value)===false) {
+      alert('セイをカタカナでで入力してください')
+      return;
+    }
+    if (kataseiInput.value.length>20) {
+      alert('入力したセイが長すぎます。20字内で再入力してください。')
+      return;
+    }
+    if (check2.test(katameiInput.value)===false) {
+      alert('メイをカタカナでで入力してください')
+      return;
+    }
+    if (katameiInput.value.length>20) {
+      alert('入力したメイが長すぎます。20字内で再入力してください。')
+      return;
+    }
+    let check3 = /^[a-zA-Z]+$/g;
+    if (check3.test(romaseiInput.value)===false) {
+      alert('姓をローマ字で入力してください')
+      return;
+    }
+    if (romaseiInput.value.length>20) {
+      alert('入力した姓が長すぎます。20字内で再入力してください。')
+      return;
+    }
+
+    let check9 = /^[a-zA-Z]*$/g;
+    if (check9.test(romameiInput.value)===false) {
+      alert('名をローマ字で入力してください')
+      return;
+    }
+
+    if (romameiInput.value.length > 20) {
+      alert('入力した名が長すぎます。40字内で再入力してください。')
+      return;
+    }
+    let check4 = /^\d{11}$/;
+    if (check4.test(telInput.value) === false) {
+      alert('電話番号を11個数字で入力してください。')
+      return;
+    }
+    if (check4.test(phoneInput.value) === false) {
+      alert('携帯電話を11個数字で入力してください。')
+      return;
+    }
+    if (addressInput.value.length > 20) {
+      alert('入力した文字が長すぎます。20字内で再入力してください。')
+      return;
+    }
+
+    //将取得的数据保存到数据库
+    //Web経由で取得したデーターをデータベースに保存する
+    fetch('/users/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({cpNameSei,cpNameMei,cpNameSeiKana,cpNameMeiKana,cpAlphLastnmae,cpAlphFirstname,cpCountry,cpOtherCountry, cpSex, cpBirthDate, cpDenwa, cpPhone, cpShokugyoCode, cpKinmusakiName})
+    })
+            // 所有信息都正确的话就传输到数据库
+            // すべての情報が正しい場合は、データベースに転送する
+            .then(response => {
+              if (response.ok) {
+                alert('保存成功');
+                //保存成功后跳转到新的页面
+                //保存成功後新しいページへ飛ぶ
+                window.location.href="wetechpractiesdemo02.html"
+
+              } else {
+                return response.text().then(text => {
+                  throw new Error(text)
+                });
+              }
+            })
+            // 如果存在有问题的输入, 就alert提示错误
+            // 入力に異常がある場合、エラーで警告する
+            .catch(error => {
+              alert( error.message);
+            });
+  });
+  // 英数字的全角转换为半角
+  // 英数字の全角-半角変換
+  function hankaku2Zenkaku(str) {
+    return str.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (s) {
+      return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+    });
+  };
+
+  // カタカナ的全角转换为半角
+  // カタカナの全角から半角への変換
+  function zenkana2Hankana(str) {
+    let kanaMap = {
+      "ガ": "ｶﾞ", "ギ": "ｷﾞ", "グ": "ｸﾞ", "ゲ": "ｹﾞ", "ゴ": "ｺﾞ",
+      "ザ": "ｻﾞ", "ジ": "ｼﾞ", "ズ": "ｽﾞ", "ゼ": "ｾﾞ", "ゾ": "ｿﾞ",
+      "ダ": "ﾀﾞ", "ヂ": "ﾁﾞ", "ヅ": "ﾂﾞ", "デ": "ﾃﾞ", "ド": "ﾄﾞ",
+      "バ": "ﾊﾞ", "ビ": "ﾋﾞ", "ブ": "ﾌﾞ", "ベ": "ﾍﾞ", "ボ": "ﾎﾞ",
+      "パ": "ﾊﾟ", "ピ": "ﾋﾟ", "プ": "ﾌﾟ", "ペ": "ﾍﾟ", "ポ": "ﾎﾟ",
+      "ヴ": "ｳﾞ", "ヷ": "ﾜﾞ", "ヺ": "ｦﾞ",
+      "ア": "ｱ", "イ": "ｲ", "ウ": "ｳ", "エ": "ｴ", "オ": "ｵ",
+      "カ": "ｶ", "キ": "ｷ", "ク": "ｸ", "ケ": "ｹ", "コ": "ｺ",
+      "サ": "ｻ", "シ": "ｼ", "ス": "ｽ", "セ": "ｾ", "ソ": "ｿ",
+      "タ": "ﾀ", "チ": "ﾁ", "ツ": "ﾂ", "テ": "ﾃ", "ト": "ﾄ",
+      "ナ": "ﾅ", "ニ": "ﾆ", "ヌ": "ﾇ", "ネ": "ﾈ", "ノ": "ﾉ",
+      "ハ": "ﾊ", "ヒ": "ﾋ", "フ": "ﾌ", "ヘ": "ﾍ", "ホ": "ﾎ",
+      "マ": "ﾏ", "ミ": "ﾐ", "ム": "ﾑ", "メ": "ﾒ", "モ": "ﾓ",
+      "ヤ": "ﾔ", "ユ": "ﾕ", "ヨ": "ﾖ",
+      "ラ": "ﾗ", "リ": "ﾘ", "ル": "ﾙ", "レ": "ﾚ", "ロ": "ﾛ",
+      "ワ": "ﾜ", "ヲ": "ｦ", "ン": "ﾝ",
+      "ァ": "ｧ", "ィ": "ｨ", "ゥ": "ｩ", "ェ": "ｪ", "ォ": "ｫ",
+      "ッ": "ｯ", "ャ": "ｬ", "ュ": "ｭ", "ョ": "ｮ",
+      "。": "｡", "、": "､", "ー": "ｰ", "「": "｢", "」": "｣", "・": "･"
+    }
+    let reg = new RegExp('(' + Object.keys(kanaMap).join('|') + ')', 'g');
+    return str
+            .replace(reg, function (match) {
+              return kanaMap[match];
+            })
+            .replace(/゛/g, 'ﾞ')
+            .replace(/゜/g, 'ﾟ');
+  };
+
+  // 将姓的カナ全角转换为半角
+  // 姓のカナ全角を半角に変換する
+  kataseiInput.oninput = function () {
+    kataseiInput.value=zenkana2Hankana(kataseiInput.value)
+  };
+  // 将名的カナ全角转换为半角
+  // 名のカナ全角を半角に変換する
+  katameiInput.oninput = function () {
+    katameiInput.value=zenkana2Hankana(katameiInput.value)
+  };
+  // 将罗马姓的英文全角转换为半角
+  // ローマ姓の英語の全角から半角への変換
+  romaseiInput.oninput = function () {
+    romaseiInput.value=hankaku2Zenkaku(romaseiInput.value)
+  };
+  // 将罗马名的英文全角转换为半角
+  // ローマ名の英語の全角から半角への変換
+  romameiInput.oninput = function () {
+    romameiInput.value=hankaku2Zenkaku(romameiInput.value)
+  };
+  // 将手机的英文全角转换为半角
+  // 携帯電話の数字の全角から半角への変換
+  phoneInput.oninput = function () {
+    phoneInput.value=hankaku2Zenkaku(phoneInput.value)
+  };
+  // 将电话的英文全角转换为半角
+  // 電話の数字の全角から半角への変換
+  telInput.oninput = function () {
+    telInput.value=hankaku2Zenkaku(telInput.value)
+  };
+
+  //各入力情報をチェックして、それに応じてエラーメッセージの表示/非表示を切り替える
+  //检查每个输入框的内容，根据正误切换提示信息。
+  seiInput.onblur = function () {
+    let beforesei= document.getElementById('beforesei');
+    let check1 = /^[\u4E00-\u9FA5]+$/;
+
+    if (check1.test(seiInput.value)===false) {
+      beforesei.innerHTML = '姓を漢字で入力してください';
+    } else if (seiInput.value.length>40) {
+      beforesei.innerHTML = '入力した姓が長すぎます。40字内で再入力してください。';
+    }
+    else {
+      beforesei.innerHTML = '';
+    }
+  };
+
+  meiInput.onblur = function () {
+    let beforemei = document.getElementById('beforemei');
+    let check1 = /^[\u4E00-\u9FA5]+$/;
+    if (check1.test(meiInput.value)===false) {
+      beforemei.innerHTML = '名を漢字で入力してください';
+    } else if (meiInput.value.length>40) {
+      beforemei.innerHTML = '入力した名が長すぎます。40字内で再入力してください。';
+    }
+    else {
+      beforemei.innerHTML = '';
+    }
+  };
+
+  kataseiInput.onblur = function () {
+    let beforekatasei = document.getElementById('beforekatasei');
+    let check2 = /^[ｧ-ﾝﾞﾟ]+$/;
+    if (check2.test(kataseiInput.value)===false) {
+      beforekatasei.innerHTML = 'セイをカタカナでで入力してください';
+    } else if (kataseiInput.value.length>40) {
+      beforekatasei.innerHTML = '入力したセイが長すぎます。40字内で再入力してください。';
+    }
+    else {
+      beforekatasei.innerHTML = '';
+    }
+  };
+
+  katameiInput.onblur = function () {
+    let beforekatamei = document.getElementById('beforekatamei');
+    let check2 =/^[ｧ-ﾝﾞﾟ]+$/;
+    if (check2.test(katameiInput.value)===false) {
+      beforekatamei.innerHTML = 'メイをカタカナでで入力してください';
+    } else if (katameiInput.value.length>40) {
+      beforekatamei.innerHTML = '入力したメイが長すぎます。40字内で再入力してください。';
+    }
+    else {
+      beforekatamei.innerHTML = '';
+    }
+  };
+
+  romaseiInput.onblur = function () {
+    let beforeromasei = document.getElementById('beforeromasei');
+    let check3 = /^[a-zA-Z]+$/g;
+    if (check3.test(romaseiInput.value)===false) {
+      beforeromasei.innerHTML = '姓をローマ字で入力してください';
+    } else if (romaseiInput.value.length>40) {
+      beforeromasei.innerHTML = '入力した姓が長すぎます。40字内で再入力してください。';
+    }
+    else {
+      beforeromasei.innerHTML = '';
+    }
+  };
+
+  romameiInput.onblur = function () {
+    let beforeromamei = document.getElementById('beforeromamei');
+    let check3 = /^[a-zA-Z]+$/g;
+    if (check3.test(romameiInput.value)===false) {
+      beforeromamei.innerHTML = '名をローマ字で入力してください';
+    } else if (romameiInput.value.length>40) {
+      beforeromamei.innerHTML = '入力した名が長すぎます。40字内で再入力してください。';
+    }
+    else {
+      beforeromamei.innerHTML = '';
+    }
+  };
+
+  telInput.onblur = function () {
+    let incorrecttel = document.getElementById('incorrecttel');
+    let check4 = /^\d{11}$/;
+    if (check4.test(telInput.value)===false) {
+      incorrecttel.innerHTML = '電話番号を11個数字で入力してください。';
+    }
+    else {
+      incorrecttel.innerHTML = '';
+    }
+  };
+
+  phoneInput.onblur = function () {
+    let telSave = telInput.value;
+    localStorage.setItem("tel", telSave);
+    let incorrectphone = document.getElementById('incorrectphone');
+    let check4 = /^\d{11}$/;
+    if (check4.test(phoneInput.value)===false) {
+      incorrectphone.innerHTML = '携帯電話を11個数字で入力してください';
+    }
+    else {
+      incorrectphone.innerHTML = '';
+    }
+
+  };
+
+
+  countryInput.onchange = function () {
+    if (countryInput.options[countryInput.selectedIndex].value === "その他"){
+      //innerHTML在JS是双向功能：获取对象的内容 或 向对象插入内容；
+      document.getElementById("nationality").style.visibility="visible";
+      document.getElementById("nationality1").style.visibility="visible";
+    } else {
+      document.getElementById("nationality").style.visibility="hidden";
+      document.getElementById("nationality1").style.visibility="hidden";
+    }
+  };
+  nationalityInput.onblur = function () {
+    let nationalitySave = nationalityInput.value;
+    localStorage.setItem("nationality", nationalitySave);
+    let worrynationality = document.getElementById('worrynationality');
+    if (nationalityInput.value.length > 30) {
+      worrynationality.innerHTML = '入力した文字が長すぎます。30字内で再入力してください。';
+    } else {
+      worrynationality.innerHTML = '';
+    }
+  };
+  //选择05无职，工作地点栏变灰，无法填信息。
+  //05無職を選択すると、勤務先の名称欄入力できない（灰色になって選択不可）
+  //onchange 事件会在域的内容改变时发生。
+  //onchange 事件也可用于单选框与复选框改变后触发的事件。
+  jobInput.onchange = function () {
+    if (jobInput.options[jobInput.selectedIndex].value === "05無職") {
+      addressInput.disabled = true;
+      //disabled有两个属性，true 和false
+      //true：禁用
+      //false ：解除禁用
+    } else {
+      addressInput.disabled = false;
+    }
+  };
+
+  //1、功能：onblur 事件会在对象失去焦点时发生，经常用于Javascript验证代码
+  // 一般用于表单输入框。
+  //2、语法：οnblur="SomeJavaScriptCode"
+  addressInput.onblur = function () {
+    let addressSave = addressInput.value;
+    localStorage.setItem("address", addressSave);
+    let incorrectaddress = document.getElementById('incorrectaddress');
+    if (addressInput.value.length > 20) {
+      incorrectaddress.innerHTML = '入力した文字が長すぎます。20字内で再入力してください。';
+    } else {
+      incorrectaddress.innerHTML = '';
+    }
+  };
+
+
+</script>
+</body>
+</html>

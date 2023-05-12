@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:width="http://www.w3.org/1999/xhtml" xmlns:height="http://www.w3.org/1999/xhtml"
+      xmlns:margin-left="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script type="text/javascript" src="Jquery.js"></script>
+  <style>
+    body {
+      margin: 20px;
+      padding: 15px;
+      background-image: url('123.jpg');
+    }
+    table {
+      border-collapse: collapse; /* 合并表格边框 */
+        margin-left: 0px;
+        font-size: 20px;
+        width: 1400px;
+        height: 50px;
+        margin-bottom: 20px;
+        margin-top: 0px;
+    }
+    select {
+        font-size: 20px;
+    }
+
+    th, td {
+      border: 2px solid black; /* 设置表格边框为2px粗的黑线框 */
+    }
+    h2:before {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 22px;
+      margin-left:0px;
+      background-color: orange;
+      vertical-align: auto;
+      align-self: start;
+    }
+    .system{
+        /*行内块*/
+
+        width: 400px;
+        height: 30px;
+        /*text-align: left;*/
+        text-align: start;
+    }
+    h3{
+        color: brown;
+    }
+    .button{
+        width: 100px;
+        height: 30px;
+        line-height: 15px;
+        background: orange;
+        color: #ffffff;
+        font-size: 13px;
+        border-radius: 13px;
+        text-align: center;
+        border: none;
+    }
+    span{
+        color: red;
+        font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+<form action="">
+  <h1 align="center">被災住宅金融支援申請</h1>
+<!--TODO//被災住宅の状況-->
+  <table cellspacing="0" align="left">
+      <tr><h2>被災住宅の状況</h2></tr>
+      <tr>
+          <td class="system">被災住宅の種類</td>
+          <td style="padding-left: 50px;">
+          <select name="" id="dBHisaijutakuShurui">
+              <option value="-1" selected ="selected">選択してください</option>
+              <option >マイホーム</option>
+              <option >賃貸住宅</option>
+          </select>
+          <span class="before" id="worrydBHisaijutakuShurui"></span>
+          </td>
+      </td>
+    </tr>
+
+      <tr>
+          <td class="system" >被災住宅の所有等</td>
+          <td style="padding-left: 50px;">
+              <select name="" id="dBHisaijutakuShoyuu">
+                  <option value="-1" selected ="selected">選択してください</option>
+                  <option >込本人が所有している</option>
+                  <option >申込本人が借りている</option>
+                  <option >上記以外</option>
+              </select>
+              <span class="before" id="worrydBHisaijutakuShoyuu"></span>
+          </td>
+      </tr>
+
+      <tr>
+          <td class="system" >被害状況</td>
+          <td style="padding-left: 50px;">
+              <select name="" id="dBHigaiJokyo">
+                  <option value="-1" selected ="selected">選択してください</option>
+                  <option >01全壊</option>
+                  <option >02大規模半壊</option>
+                  <option >03半壊</option>
+                  <option >04避難指示あり</option>
+              </select>
+              <span class="before" id="worrydBHigaiJokyo"></span>
+          </td>
+      </tr>
+
+      <tr>
+          <td class="system">被災住宅の修理が不能又は困難である</td>
+          <td ><input type="checkbox" style="margin-left: 50px;" id="dBHigaiJokyoDaikiboHankaiOrHankai">困難である</td>
+          <span class="before" id="worrydBHigaiJokyoDaikiboHankaiOrHankai"></span>
+      </tr>
+  </table>
+<!--TODO//敷地状況-->
+    <table cellspacing="0" align="left">
+        <tr>
+        <h2 style="margin-top: 200px;">敷地状況</h2>
+        </tr>
+
+        <tr>
+            <td class="system">敷地の面積（㎡）</td>
+            <td><input type="text" style="margin-left: 50px;" id="dBBukken_Menseki">㎡
+                <span class="before" id="worrydBBukken_Menseki"></span>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td class="system">物件_敷地（所在地）_都道府県</td>
+            <td style="padding-left: 50px;">
+                <select name="" id="aPLBukkenAddressTodofuken">
+                    <option value="-1" selected ="selected">選択してください</option>
+                </select>
+                <span class="before" id="worryaPLBukkenAddressTodofuken"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td>物件_敷地（所在地）_市郡</td>
+            <td><input type="text" style="margin-left: 50px;" id="dBBukkenAddressShigun">
+                <span class="before" id="worrydBBukkenAddressShigun"></span>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>物件_敷地（所在地）_町村</td>
+            <td><input type="text" style="margin-left: 50px;" id="dBBukkenAddressChoson">
+                <span class="before" id="worrydBBukkenAddressChoson"></span>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>物件_敷地（所在地）_番地</td>
+            <td><input type="text" style="margin-left: 50px;" id="aPLBukkenAddressBanchi">
+                <span class="before" id="worryaPLBukkenAddressBanchi"></span>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>物件_敷地（所在地）_郵便番号</td>
+            <td><input type="text" style="margin-left: 50px;" id="aPLBukkenAddressPostCode3">
+                <span class="before" id="worryaPLBukkenAddressPostCode3"></span>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td class="system">防災集団移転事業に係る住宅再建を行う</td>
+            <td ><input type="checkbox" style="margin-left: 50px;" id="dBBousaiSyudanItenJigyo">該当
+                <span class="before" id="worrydBBousaiSyudanItenJigyo"></span>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td class="system" >敷地の所有関係</td>
+            <td style="padding-left: 50px;">
+                <select name="" id="dBBukkenShikichiNoShoyuKankei">
+                    <option value="-1" selected ="selected">選択してください</option>
+                    <option >01 所有権</option>
+                    <option >02 地上権</option>
+                    <option >03 賃貸借</option>
+                    <option >04 使用貸借</option>
+                </select>
+                <span class="before" id="worrydBBukkenShikichiNoShoyuKankei"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="system">建物の床面積_住宅部分</td>
+            <td><input type="text" style="margin-left: 50px;" id=dBBukken_Tatemono_Jutaku>㎡
+                <span class="before" id="worrydBBukken_Tatemono_Jutaku"></span>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td class="system">建物の床面積_非住宅部分</td>
+            <td><input type="text" style="margin-left: 50px;" id=dBBukken_Tatemono_HiJutaku>㎡
+                <span class="before" id="worrydBBukken_Tatemono_HiJutaku"></span>
+            </td>
+
+        </tr>
+
+
+        <tr>
+            <td class="system" >建物の構造（戸建形式）</td>
+            <td style="padding-left: 50px;">
+                <select name="" id="dBBukken_Kozo">
+                    <option value="-1" selected ="selected">選択してください</option>
+                    <option >01木作</option>
+                    <option >02耐火</option>
+                    <option >03準耐火</option>
+                </select>
+                <span class="before" id="worrydBBukken_Kozo"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="system" >建て方</td>
+            <td style="padding-left: 50px;">
+                <select name="" id="dBBukken_TatekataKodateKeishiki">
+                    <option value="-1" selected ="selected">選択してください</option>
+                    <option >01一戸建て</option>
+                    <option >02連続建て</option>
+                    <option >03重ね建て</option>
+                    <option >04共同建</option>
+                </select>
+                <span class="before" id="worrydBBukken_TatekataKodateKeishiki"></span>
+        </tr>
+
+        <tr>
+            <td class="system" >入居予定年（年）</td>
+            <td style="padding-left: 50px;">
+                <select name="" id="dBNyukyoYoteiDateYear">
+                    <option value="-1" selected ="selected">選択してください</option>
+                </select>
+                <span class="before" id="worrydBNyukyoYoteiDateYear"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="system" >入居予定月（月）</td>
+            <td style="padding-left: 50px;">
+                <select name="" id="dBNyukyoYoteiDateMonth">
+                    <option value="-1" selected ="selected">選択してください</option>
+                </select>
+                <span class="before" id="worrydBNyukyoYoteiDateMonth"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="system" >住宅の用途</td>
+            <td style="padding-left: 50px;">
+                <select name="" id="dBJutakuYoto">
+                    <option value="-1" selected ="selected">選択してください</option>
+                    <option >01自ら居住する</option>
+                    <option >02親族が居住する</option>
+                    <option >03賃貸住宅</option>
+                    <option >04その他</option>
+                </select>
+                <span class="before" id="worrydBJutakuYoto"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="system" >物件_工事完了予定年月_年</td>
+            <td style="padding-left: 50px;">
+                <select name="" id="dBBukken_KojiKanryoDate_Year">
+                    <option value="-1" selected ="selected">選択してください</option>
+                </select>
+                <span class="before" id="worrydBBukken_KojiKanryoDate_Year"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="system" >物件_工事完了予定年月_月</td>
+            <td style="padding-left: 50px;">
+                <select name="" id="dBBukken_KojiKanryoDate_Month">
+                    <option value="-1" selected ="selected">選択してください</option>
+                </select>
+                <span class="before" id="worrydBBukken_KojiKanryoDate_Month"></span>
+            </td>
+        </tr>
+    </table>
+<!--TODO//資金の受取予定年月-->
+    <table cellspacing="0" align="left">
+        <tr>
+            <h2 style="margin-top: 650px;">資金の受取予定年月</h2>
+        </tr>
+
+        <tr>
+            <td class="system" >資金の受取予定年月_土地先行資金_年</td>
+            <td style="padding-left: 50px;">
+                <select name="" id="dBShikinDateTochiShikinYear">
+                    <option value="-1" selected ="selected">選択してください</option>
+                </select>
+                <span class="before" id="worrydBShikinDateTochiShikinYear"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="system" >資金の受取予定年月_土地先行資金_月</td>
+            <td style="padding-left: 50px;">
+                <select name="" id="dBShikinDateTochiShikinMonth">
+                    <option value="-1" selected ="selected">選択してください</option>
+                </select>
+                <span class="before" id="worrydBShikinDateTochiShikinMonth"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="system" >資金の受取予定年月_中間資金_年</td>
+            <td style="padding-left: 50px;">
+                <select name="" id="dBShikinDateChukanShikinYear">
+                    <option value="-1" selected ="selected">選択してください</option>
+                </select>
+                <span class="before" id="worrydBShikinDateChukanShikinYear"></span>
+            </TD>
+        </tr>
+
+        <tr>
+            <td class="system" >資金の受取予定年月_中間資金_月</td>
+            <td style="padding-left: 50px;">
+                <select name="" id="dBShikinDateChukanShikinMonth">
+                    <option value="-1" selected ="selected">選択してください</option>
+                </select>
+                <span class="before" id="worrydBShikinDateChukanShikinMonth"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="system" >資金の受取予定年月_最終資金_年</td>
+            <td style="padding-left: 50px;">
+                <select name="" id="dBShikinDateSaishuShikinYear">
+                    <option value="-1" selected ="selected">選択してください</option>
+                </select>
+                <span class="before" id="worrydBShikinDateSaishuShikinYear"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="system" >資金の受取予定年月_最終資金_月</td>
+            <td style="padding-left: 50px;">
+                <select name="" id="dBShikinDateSaishuShikinMonth">
+                    <option value="-1" selected ="selected">選択してください</option>
+                </select>
+                <span class="before" id="worrydBShikinDateSaishuShikinMonth"></span>
+            </td>
+        </tr>
+    </table>
+<!--TODO//工事請負事業者-->
+    <table cellspacing="0" align="left">
+        <tr>
+            <h2 style="margin-top: 250px;">資金の受取予定年月</h2>
+        </tr>
+
+        <tr>
+            <td class="system">会社名称</td>
+            <td><input type="text" style="margin-left: 50px;" id="dBKariireIninKaishaName">
+                <span class="before" id="worrydBKariireIninKaishaName"></span>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td class="system">仲介業者又は販売代理_名称（カナ）</td>
+            <td><input type="text" style="margin-left: 50px;" id="dBChukaiHanbaiNameKana">
+                <span class="before" id="worrydBChukaiHanbaiNameKana"></span>
+            </td>
+
+        </tr>
+    </table>
+<!--TODO//担当者名-->
+    <table cellspacing="0" align="left">
+        <tr>
+            <h2 style="margin-top: 120px;">担当者名</h2>
+        </tr>
+
+        <tr>
+            <td class="system">仲介業者又は販売代理_担当者名_名</td>
+            <td><input type="text" style="margin-left: 50px;" id="dBChukaiHanbaiTantoshaNameMei">
+                <span class="before" id="worrydBChukaiHanbaiTantoshaNameMei"></span>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td class="system">仲介業者又は販売代理_担当者名_姓</td>
+            <td><input type="text" style="margin-left: 50px;" id="dBChukaiHanbaiTantoshaNameSei">
+                <span class="before" id="worrydBChukaiHanbaiTantoshaNameSei"></span>
+            </td>
+
+        </tr>
+    </table>
+<!--TODO//建設に要する費用-->
+    <table cellspacing="0" align="left">
+        <tr>
+            <h2 style="margin-top: 120px;">建設に要する費用</h2>
+        </tr>
+
+        <tr>
+            <td class="system">建設費</td>
+            <td><input type="text" style="margin-left: 50px;" id="dBHiyouKensetsuHi">万円
+                <span class="before" id="worrydBHiyouKensetsuHi"></span>
+            </td>
+
+        </tr>
+
+
+        <tr>
+            <td class="system">土地取得費</td>
+            <td><input type="text" style="margin-left: 50px;" id="dBHiyouTochiSyotokuHi">万円
+                <span class="before" id="worrydBHiyouTochiSyotokuHi"></span>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td class="system">費用合計</td>
+            <td><input type="text" style="margin-left: 50px; "  id="dBHiyouTotal" disabled >万円
+                <span class="before" id="worrydBHiyouTotal"></span>
+            </td>
+
+        </tr>
+    </table>
+<!--TODO//災害融資の借入希望額-->
+    <table cellspacing="0" align="left">
+        <tr>
+            <h2 style="margin-top: 150px;">災害融資の借入希望額</h2>
+        </tr>
+        <tr>
+            <td class="system">借入希望額_借入金額</td>
+            <td><input type="text" style="margin-left: 50px;" id="dBKariireGakuKingaku">万円
+                <span class="before" id="worrydBKariireGakuKingaku"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="system">借入希望額_金利(不能超过10.00)</td>
+            <td><input type="text" style="margin-left: 50px;" id="dBKariireGakuKinri">円
+                <span class="before" id="worrydBKariireGakuKinri"></span>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td class="system">借入希望額_返済期間</td>
+            <td><input type="text" style="margin-left: 50px;" id="dBKariireGakuHensaiKikan">年
+                <span class="before" id="worrydBKariireGakuHensaiKikan"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="system">返済方法</td>
+            <td style="padding-left: 50px;">
+                <select name="" id="dBHensaiHouhou">
+                    <option value="-1" selected ="selected">選択してください</option>
+                    <option >01 元利均等返済</option>
+                    <option >02 元金均等返済</option>
+                </select>
+                <span class="before" id="worrydBHensaiHouhou"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="system">借入希望額_年間返済額の1/12</td>
+            <td><input type="text" style="margin-left: 50px;" id="dBKariireGakuNenHensai12No1" readonly>
+                <span class="before" id="worrydBKariireGakuNenHensai12No1"></span>
+            </td>
+
+        </tr>
+
+
+
+        <tr>
+            <td class="system">被災親族同居の有無</td>
+            <td style="padding-left: 50px;">
+                <select name="" id="dBHisaiShinzokuDokyoAri">
+                    <option value="-1" selected ="selected">選択してください</option>
+                    <option >01 有</option>
+                    <option >02 無</option>
+                </select>
+                <span class="before" id="worrydBHisaiShinzokuDokyoAri"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="system">据置期間の年数</td>
+            <td style="padding-left: 50px;">
+                <select name="" id="dBSueokiKikanNoNensu">
+                    <option value="-1" selected ="selected">選択してください</option>
+                    <option >01:1年</option>
+                    <option >02:2年</option>
+                    <option >03:3年</option>
+                    <option >04:4年</option>
+                    <option >05:5年以上</option>
+                </select>
+                <span class="before" id="worrydBSueokiKikanNoNensu"></span>
+            </td>
+        </tr>
+    </table>
+<!--TODO//その他の借入内容(「その他の借入内容」の項目のいずれかを入力した場合、全ての項目を入力する-->
+    <table cellspacing="0" align="left">
+        <tr>
+            <h2 style="margin-top: 300px;">その他の借入内容</h2>
+            <h3>「その他の借入内容」の項目のいずれかを入力した場合、全ての項目を入力する必要があります</h3>
+
+        <tr>
+            <td class="system">その他_借入先名称等</td>
+            <td><input type="text" style="margin-left: 50px;" id="dBSonotaName">
+                <span class="before" id="worrydBSonotaName"></span>
+            </td>
+
+    </tr>
+
+        <tr>
+            <td class="system">その他_借入金額（万円）</td>
+            <td><input type="text" style="margin-left: 50px;" id="dBSonotaKingaku">万円
+                <span class="before" id="worrydBSonotaKingaku"></span>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td class="system">その他_返済期間　（年）</td>
+            <td><input type="text" style="margin-left: 50px;" id="dBSonotaHensaiKikan">年
+                <span class="before" id="worrydBSonotaHensaiKikan"></span>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td class="system">その他_年間返済額の1/12</td>
+            <td><input type="text" style="margin-left: 50px;" id="dBSonotaNenHensai12No1" readonly>円
+                <span class="before" id="worrydBSonotaNenHensai12No1"></span>
+            </td>
+
+        </tr>
+
+        <tr >
+            <td class="system">建設に要する費用（再掲）</td>
+            <td><input type="text" style="margin-left: 50px;"  id="dBHiyouTotal1" readonly>万円
+                <span class="before" id="worrydBHiyouTotal1"></span>
+            </td>
+
+        </tr>
+
+        <tr >
+            <td class="system">災害融資の借入希望額、その他の借入内容</td>
+            <td><input type="text" style="margin-left: 50px;" id="dBSogoKingaku">万円
+                <span class="before" id="worrydBSogoKingaku"></span>
+            </td>
+
+        </tr>
+
+        <tr >
+            <td class="system">金融機関名</td>
+            <td><input type="text" style="margin-left: 50px;" id="dBKinyuKikanName">
+                <span class="before" id="worrydBKinyuKikanName"></span>
+            </td>
+        </tr>
+    </table>
+</form>
+<br>
+<div class="submit" style="margin-top: 250px;" align="center">
+    <button type="button" class="button" id="returnpage">戻る</button>
+    <button type="button" class="button" id="next">次へ</button>
+</div>
+<script>
+    let dBHisaijutakuShuruiInput = document.getElementById('dBHisaijutakuShurui');
+    let dBHisaijutakuShoyuuInput = document.getElementById('dBHisaijutakuShoyuu');
+    let dBHigaiJokyoInput = document.getElementById('dBHigaiJokyo');
+    let dBHigaiJokyoDaikiboHankaiOrHankaiInput = document.getElementById('dBHigaiJokyoDaikiboHankaiOrHankai');
+    let dBBukken_MensekiInput = document.getElementById('dBBukken_Menseki');
+    let aPLBukkenAddressTodofukenInput = document.getElementById('aPLBukkenAddressTodofuken');
+    let dBBukkenAddressShigunInput = document.getElementById('dBBukkenAddressShigun');
+    let dBBukkenAddressChosonInput = document.getElementById('dBBukkenAddressChoson');
+    let aPLBukkenAddressBanchiInput = document.getElementById('aPLBukkenAddressBanchi');
+    let aPLBukkenAddressPostCode3Input = document.getElementById('aPLBukkenAddressPostCode3');
+    let dBBousaiSyudanItenJigyoInput = document.getElementById('dBBousaiSyudanItenJigyo');
+    let dBBukkenShikichiNoShoyuKankeiInput = document.getElementById('dBBukkenShikichiNoShoyuKankei');
+    let dBBukken_Tatemono_JutakuInput = document.getElementById('dBBukken_Tatemono_Jutaku');
+    let dBBukken_Tatemono_HiJutakuInput = document.getElementById('dBBukken_Tatemono_HiJutaku');
+    let dBBukken_KozoInput = document.getElementById('dBBukken_Kozo');
+    let dBBukken_TatekataKodateKeishikiInput = document.getElementById('dBBukken_TatekataKodateKeishiki');
+    let dBNyukyoYoteiDateYearInput = document.getElementById('dBNyukyoYoteiDateYear');
+    let dBNyukyoYoteiDateMonthInput = document.getElementById('dBNyukyoYoteiDateMonth');
+    let dBJutakuYotoInput = document.getElementById('dBJutakuYoto');
+    let dBBukken_KojiKanryoDate_YearInput = document.getElementById('dBBukken_KojiKanryoDate_Year');
+    let dBBukken_KojiKanryoDate_MonthInput = document.getElementById('dBBukken_KojiKanryoDate_Month');
+    let dBShikinDateTochiShikinYearInput = document.getElementById('dBShikinDateTochiShikinYear');
+    let dBShikinDateTochiShikinMonthInput = document.getElementById('dBShikinDateTochiShikinMonth');
+    let dBShikinDateChukanShikinYearInput = document.getElementById('dBShikinDateChukanShikinYear');
+    let dBShikinDateChukanShikinMonthInput = document.getElementById('dBShikinDateChukanShikinMonth');
+    let dBShikinDateSaishuShikinYearInput = document.getElementById('dBShikinDateSaishuShikinYear');
+    let dBShikinDateSaishuShikinMonthInput = document.getElementById('dBShikinDateSaishuShikinMonth');
+    let dBKariireIninKaishaNameInput = document.getElementById('dBKariireIninKaishaName');
+    let dBChukaiHanbaiNameKanaInput = document.getElementById('dBChukaiHanbaiNameKana');
+    let dBChukaiHanbaiTantoshaNameMeiInput = document.getElementById('dBChukaiHanbaiTantoshaNameMei');
+    let dBChukaiHanbaiTantoshaNameSeiInput = document.getElementById('dBChukaiHanbaiTantoshaNameSei');
+    let dBHiyouKensetsuHiInput = document.getElementById('dBHiyouKensetsuHi');
+    let dBHiyouTochiSyotokuHiInput = document.getElementById('dBHiyouTochiSyotokuHi');
+    let dBHiyouTotalInput = document.getElementById('dBHiyouTotal');
+    let dBKariireGakuKingakuInput = document.getElementById('dBKariireGakuKingaku');
+    let dBKariireGakuKinriInput = document.getElementById('dBKariireGakuKinri');
+    let dBKariireGakuHensaiKikanInput = document.getElementById('dBKariireGakuHensaiKikan');
+    let dBKariireGakuNenHensai12No1Input = document.getElementById('dBKariireGakuNenHensai12No1');
+    let dBHensaiHouhouInput = document.getElementById('dBHensaiHouhou');
+    let dBHisaiShinzokuDokyoAriInput = document.getElementById('dBHisaiShinzokuDokyoAri');
+    let dBSueokiKikanNoNensuInput = document.getElementById('dBSueokiKikanNoNensu');
+    let dBSonotaNameInput = document.getElementById('dBSonotaName');
+    let dBSonotaKingakuInput = document.getElementById('dBSonotaKingaku');
+    let dBSonotaHensaiKikanInput = document.getElementById('dBSonotaHensaiKikan');
+    let dBSonotaNenHensai12No1Input = document.getElementById('dBSonotaNenHensai12No1');
+    let dBSogoKingakuInput = document.getElementById('dBSogoKingaku');
+    let dBKinyuKikanNameInput = document.getElementById('dBKinyuKikanName');
+    let dBtantoushaNameInput = document.getElementById('dBtantoushaName');
+    let dBshinseishaNameInput = document.getElementById('dBshinseishaName');
+    let dBHiyouTotal1Input = document.getElementById('dBHiyouTotal1')
+    let nextButton = document.getElementById('next');
+
+    //TODO:02敷地状況机能实现
+    //整数 3つ、小数点以下 2 桁
+    dBBukken_MensekiInput.addEventListener("blur", function() {
+        // 获取输入框中的值
+        const value = dBBukken_MensekiInput.value.trim();
+
+        // 如果值为空，则将输入框的值设为0.00
+        if (value === "") {
+            dBBukken_MensekiInput.value = "0.00";
+            return;
+        }
+
+        // 将值转换为浮点数，并截断至小数点后第二位
+        let floatValue = parseFloat(value);
+        if (isNaN(floatValue)) {
+            dBBukken_MensekiInput.value = "0.00";
+            return;
+        }
+        //Math.min(floatValue, 10) 表示获取 floatValue 和 10 中的最小值。如果 floatValue 的值大于 10
+        // ，则返回 10。如果 floatValue 的值小于或等于 10，则返回 floatValue 的值。
+        // 这一行代码确保了输入框中的值不会超过 10。
+        //floatValue = Math.min(floatValue, 999).toFixed(2);
+        if(floatValue>999){
+            worrydBBukken_Menseki.innerHTML='面積の整数部は3桁まで、小数部は2桁まで入力してください。'
+            //alert("面積の整数部は3桁まで、小数部は2桁まで入力してください。")
+            return dBBukken_MensekiInput.value = "0.00";
+        }
+        // 将输入框的值设为截断后的值，并自动补全小数位为00
+        // if (floatValue.length > 3) {
+        //     dBBukken_MensekiInput.value = value.substring(0, 3);//substring 是 JavaScript 中字符串对象的一个方法，用于截取字符串的一部分。
+        //     // 它可以接受两个参数，第一个参数指定截取的起始位置，第二个参数（可选）指定截取的结束位置。
+        // }
+        //dBBukken_MensekiInput.value = floatValue.padEnd(3, '0');
+    });
+
+    dBBukken_Tatemono_JutakuInput.addEventListener("blur", function() {
+        // 获取输入框中的值
+        const value = dBBukken_Tatemono_JutakuInput.value.trim();
+
+        // 如果值为空，则将输入框的值设为0.00
+        if (value === "") {
+            dBBukken_Tatemono_JutakuInput.value = "0.00";
+            return;
+        }
+
+        // 将值转换为浮点数，并截断至小数点后第二位
+        let floatValue = parseFloat(value);
+        if (isNaN(floatValue)) {
+            dBBukken_Tatemono_JutakuInput.value = "0.00";
+            return;
+        }
+        //Math.min(floatValue, 10) 表示获取 floatValue 和 10 中的最小值。如果 floatValue 的值大于 10
+        // ，则返回 10。如果 floatValue 的值小于或等于 10，则返回 floatValue 的值。
+        // 这一行代码确保了输入框中的值不会超过 10。
+        //floatValue = Math.min(floatValue, 999).toFixed(2);
+        if(floatValue>999){
+            //alert("建物の床面積_住宅部分は3桁まで、小数部は2桁まで入力してください。")
+            worrydBBukken_Tatemono_Jutaku.innerHTML='建物の床面積_住宅部分は3桁まで、小数部は2桁まで入力してください。'
+            return dBBukken_Tatemono_JutakuInput.value = "0.00";
+        }
+        // 将输入框的值设为截断后的值，并自动补全小数位为00
+        // if (floatValue.length > 3) {
+        //     dBBukken_MensekiInput.value = value.substring(0, 3);//substring 是 JavaScript 中字符串对象的一个方法，用于截取字符串的一部分。
+        //     // 它可以接受两个参数，第一个参数指定截取的起始位置，第二个参数（可选）指定截取的结束位置。
+        // }
+        //dBBukken_MensekiInput.value = floatValue.padEnd(3, '0');
+    });
+
+
+    dBBukken_Tatemono_HiJutakuInput.addEventListener("blur", function() {
+        // 获取输入框中的值
+        const value = dBBukken_Tatemono_HiJutakuInput.value.trim();
+
+        // 如果值为空，则将输入框的值设为0.00
+        if (value === "") {
+            dBBukken_Tatemono_HiJutakuInput.value = "0.00";
+            return;
+        }
+
+        // 将值转换为浮点数，并截断至小数点后第二位
+        let floatValue = parseFloat(value);
+        if (isNaN(floatValue)) {
+            dBBukken_Tatemono_HiJutakuInput.value = "0.00";
+            return;
+        }
+        //Math.min(floatValue, 10) 表示获取 floatValue 和 10 中的最小值。如果 floatValue 的值大于 10
+        // ，则返回 10。如果 floatValue 的值小于或等于 10，则返回 floatValue 的值。
+        // 这一行代码确保了输入框中的值不会超过 10。
+        //floatValue = Math.min(floatValue, 999).toFixed(2);
+        if(floatValue>999){
+            //alert("建物の床面積_非住宅部分は3桁まで、小数部は2桁まで入力してください。")
+            worrydBBukken_Tatemono_HiJutaku.innerHTML='建物の床面積_非住宅部分は3桁まで、小数部は2桁まで入力してください。'
+            return dBBukken_Tatemono_HiJutakuInput.value = "0.00";
+        }
+        // 将输入框的值设为截断后的值，并自动补全小数位为00
+        // if (floatValue.length > 3) {
+        //     dBBukken_MensekiInput.value = value.substring(0, 3);//substring 是 JavaScript 中字符串对象的一个方法，用于截取字符串的一部分。
+        //     // 它可以接受两个参数，第一个参数指定截取的起始位置，第二个参数（可选）指定截取的结束位置。
+        // }
+        //dBBukken_MensekiInput.value = floatValue.padEnd(3, '0');
+    });
+
+    //下面时计算都道府県
+    const prefectures = [
+        "北海道",
+        "青森県",
+        "岩手県",
+        "宮城県",
+        "秋田県",
+        "山形県",
+        "福島県",
+        "茨城県",
+        "栃木県",
+        "群馬県",
+        "埼玉県",
+        "千葉県",
+        "東京都",
+        "神奈川県",
+        "新潟県",
+        "富山県",
+        "石川県",
+        "福井県",
+        "山梨県",
+        "長野県",
+        "岐阜県",
+        "静岡県",
+        "愛知県",
+        "三重県",
+        "滋賀県",
+        "京都府",
+        "大阪府",
+        "兵庫県",
+        "奈良県",
+        "和歌山県",
+        "鳥取県",
+        "島根県",
+        "岡山県",
+        "広島県",
+        "山口県",
+        "徳島県",
+        "香川県",
+        "愛媛県",
+        "高知県",
+        "福岡県",
+        "佐賀県",
+        "長崎県",
+        "熊本県",
+        "大分県",
+        "宮崎県",
+        "鹿児島県",
+        "沖縄県"
+    ];
+
+    const select = document.getElementById("aPLBukkenAddressTodofuken");
+
+
+    dBBukken_Tatemono_JutakuInput.addEventListener("blur", function(){
+        // 将输入的值转换为浮点数
+        const value = parseFloat(dBBukken_Tatemono_JutakuInput.value);
+
+        // 检查输入的值是否为合法的浮点数
+        if (isNaN(value) || value < 0 || value.toFixed(2) !== dBBukken_Tatemono_JutakuInput.value) {
+            // 如果输入的值不合法，清空输入框并给出提示
+            dBBukken_Tatemono_JutakuInput.value = '';
+            alert('请输入一个合法的浮点数，小数点后最多保留两位！');
+        }
+    });
+
+
+    for (let i = 0; i < prefectures.length; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.text = prefectures[i];
+        select.appendChild(option);
+    }
+
+
+    //本段为自动计算近五年
+    const currentYear = new Date().getFullYear();
+
+    //本段为自动计算近五年
+    for (let i = 0; i < 5; i++) {
+        const option = document.createElement('option');
+        option.value = currentYear + i;
+        option.innerText = currentYear + i;
+        document.getElementById('dBBukken_KojiKanryoDate_Year').appendChild(option);
+
+        const option2 = document.createElement('option');
+        option2.value = currentYear + i;
+        option2.innerText = currentYear + i;
+        document.getElementById('dBNyukyoYoteiDateYear').appendChild(option2);
+
+        const option3 = document.createElement('option');
+        option3.value = currentYear + i;
+        option3.innerText = currentYear + i;
+        document.getElementById('dBShikinDateTochiShikinYear').appendChild(option3);
+
+        const option4 = document.createElement('option');
+        option4.value = currentYear + i;
+        option4.innerText = currentYear + i;
+        document.getElementById('dBShikinDateChukanShikinYear').appendChild(option4);
+
+        const option5 = document.createElement('option');
+        option5.value = currentYear + i;
+        option5.innerText = currentYear + i;
+        document.getElementById('dBShikinDateSaishuShikinYear').appendChild(option5);
+    }
+
+    //12个月
+    const currentMonth = 1;
+    // 动态生成选项
+    for (let i = 0; i < 12; i++) {
+        const option = document.createElement('option');
+        option.value = currentMonth + i;
+        option.innerText = currentMonth + i;
+        document.getElementById('dBNyukyoYoteiDateMonth').appendChild(option);
+
+        const option2 = document.createElement('option');
+        option2.value = currentMonth + i;
+        option2.innerText = currentMonth + i;
+        document.getElementById('dBBukken_KojiKanryoDate_Month').appendChild(option2);
+
+        const option3 = document.createElement('option');
+        option3.value = currentMonth + i;
+        option3.innerText = currentMonth + i;
+        document.getElementById('dBShikinDateTochiShikinMonth').appendChild(option3);
+
+        const option4 = document.createElement('option');
+        option4.value = currentMonth + i;
+        option4.innerText = currentMonth + i;
+        document.getElementById('dBShikinDateChukanShikinMonth').appendChild(option4);
+
+        const option5 = document.createElement('option');
+        option5.value = currentMonth + i;
+        option5.innerText = currentMonth + i;
+        document.getElementById('dBShikinDateSaishuShikinMonth').appendChild(option5);
+    }
+
+
+    // dBHiyouKensetsuHiInput.addEventListener("input", function() {
+    //     var kensetsuHi = parseFloat(dBHiyouKensetsuHiInput.value) || 0;
+    //     var tochiSyotokuHi = parseFloat(dBHiyouTochiSyotokuHiInput.value) || 0;
+    //     dBHiyouTotalInput.textContent = (kensetsuHi + tochiSyotokuHi).toLocaleString();
+    // });
+    //
+    // dBHiyouTochiSyotokuHiInput.addEventListener("input", function() {
+    //     var kensetsuHi = parseFloat(dBHiyouKensetsuHiInput.value) || 0;
+    //     var tochiSyotokuHi = parseFloat(dBHiyouTochiSyotokuHiInput.value) || 0;
+    //     dBHiyouTotalInput.textContent = (kensetsuHi + tochiSyotokuHi).toLocaleString();
+    // });
+    //TODO:04工事請負事業者
+    function zenkana2Hankana(str) {
+        let kanaMap = {
+            "ガ": "ｶﾞ", "ギ": "ｷﾞ", "グ": "ｸﾞ", "ゲ": "ｹﾞ", "ゴ": "ｺﾞ",
+            "ザ": "ｻﾞ", "ジ": "ｼﾞ", "ズ": "ｽﾞ", "ゼ": "ｾﾞ", "ゾ": "ｿﾞ",
+            "ダ": "ﾀﾞ", "ヂ": "ﾁﾞ", "ヅ": "ﾂﾞ", "デ": "ﾃﾞ", "ド": "ﾄﾞ",
+            "バ": "ﾊﾞ", "ビ": "ﾋﾞ", "ブ": "ﾌﾞ", "ベ": "ﾍﾞ", "ボ": "ﾎﾞ",
+            "パ": "ﾊﾟ", "ピ": "ﾋﾟ", "プ": "ﾌﾟ", "ペ": "ﾍﾟ", "ポ": "ﾎﾟ",
+            "ヴ": "ｳﾞ", "ヷ": "ﾜﾞ", "ヺ": "ｦﾞ",
+            "ア": "ｱ", "イ": "ｲ", "ウ": "ｳ", "エ": "ｴ", "オ": "ｵ",
+            "カ": "ｶ", "キ": "ｷ", "ク": "ｸ", "ケ": "ｹ", "コ": "ｺ",
+            "サ": "ｻ", "シ": "ｼ", "ス": "ｽ", "セ": "ｾ", "ソ": "ｿ",
+            "タ": "ﾀ", "チ": "ﾁ", "ツ": "ﾂ", "テ": "ﾃ", "ト": "ﾄ",
+            "ナ": "ﾅ", "ニ": "ﾆ", "ヌ": "ﾇ", "ネ": "ﾈ", "ノ": "ﾉ",
+            "ハ": "ﾊ", "ヒ": "ﾋ", "フ": "ﾌ", "ヘ": "ﾍ", "ホ": "ﾎ",
+            "マ": "ﾏ", "ミ": "ﾐ", "ム": "ﾑ", "メ": "ﾒ", "モ": "ﾓ",
+            "ヤ": "ﾔ", "ユ": "ﾕ", "ヨ": "ﾖ",
+            "ラ": "ﾗ", "リ": "ﾘ", "ル": "ﾙ", "レ": "ﾚ", "ロ": "ﾛ",
+            "ワ": "ﾜ", "ヲ": "ｦ", "ン": "ﾝ",
+            "ァ": "ｧ", "ィ": "ｨ", "ゥ": "ｩ", "ェ": "ｪ", "ォ": "ｫ",
+            "ッ": "ｯ", "ャ": "ｬ", "ュ": "ｭ", "ョ": "ｮ",
+            "。": "｡", "、": "､", "ー": "ｰ", "「": "｢", "」": "｣", "・": "･"
+        }
+        let reg = new RegExp('(' + Object.keys(kanaMap).join('|') + ')', 'g');
+        return str
+            .replace(reg, function (match) {
+                return kanaMap[match];
+            })
+            .replace(/゛/g, 'ﾞ')
+            .replace(/゜/g, 'ﾟ');
+    };
+    dBChukaiHanbaiNameKanaInput.oninput = function () {
+        dBChukaiHanbaiNameKanaInput.value=zenkana2Hankana(dBChukaiHanbaiNameKanaInput.value)
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //TODO:06建設に要する費用 机能实现
+    //5位整数
+    dBHiyouKensetsuHiInput.addEventListener("input", function() {
+        // 获取输入框中的值
+        const value = dBHiyouKensetsuHiInput.value.trim();
+
+        // 如果值为空，则不进行限制
+        if (value === "") {
+            return;
+        }
+
+        // 如果值超过了5位整数，则截断为5位整数
+        if (value.length > 5) {
+            dBHiyouKensetsuHiInput.value = value.substring(0, 5);//substring 是 JavaScript 中字符串对象的一个方法，用于截取字符串的一部分。
+            // 它可以接受两个参数，第一个参数指定截取的起始位置，第二个参数（可选）指定截取的结束位置。
+        }
+
+        // 如果值不是数字，则将输入框的值设为0
+        if (!/^\d+$/.test(value)) {
+            dBHiyouKensetsuHiInput.value = "0";
+        }
+    });
+    //5位整数
+    dBHiyouTochiSyotokuHiInput.addEventListener("input", function() {
+        // 获取输入框中的值
+        const value = dBHiyouTochiSyotokuHiInput.value.trim();
+
+        // 如果值为空，则不进行限制
+        if (value === "") {
+            return;
+        }
+
+        // 如果值超过了5位整数，则截断为5位整数
+        if (value.length > 5) {
+            dBHiyouTochiSyotokuHiInput.value = value.substring(0, 5);//substring 是 JavaScript 中字符串对象的一个方法，用于截取字符串的一部分。
+            // 它可以接受两个参数，第一个参数指定截取的起始位置，第二个参数（可选）指定截取的结束位置。
+        }
+
+        // 如果值不是数字，则将输入框的值设为0
+        if (!/^\d+$/.test(value)) {
+            dBHiyouTochiSyotokuHiInput.value = "0";
+        }
+    });
+    //计算建筑总和
+    dBHiyouKensetsuHiInput.addEventListener('input', calculateTotal);
+    dBHiyouTochiSyotokuHiInput.addEventListener('input', calculateTotal);
+
+    function calculateTotal() {
+        // 将输入框的值转换成数字，如果无法转换则设为0
+        const kensetsuHi = parseInt(dBHiyouKensetsuHiInput.value) || 0;
+        const tochiSyotokuHi = parseInt(dBHiyouTochiSyotokuHiInput.value) || 0;
+
+        // 计算总和
+        const total = kensetsuHi + tochiSyotokuHi;
+        if(total.value>999999){
+            alert("費用合計が 6 桁以下であることを確認してください")
+        }else {
+            dBHiyouTotalInput.value = total;
+            dBHiyouTotal1Input.value = total;
+        }
+        // 将总和赋值给"費用合計"这个input元素
+    }
+
+
+    //TODO：07災害融資の借入希望額
+    //整数5位
+    dBKariireGakuKingakuInput.addEventListener("input", function() {
+        // 获取输入框中的值
+        const value = dBKariireGakuKingakuInput.value.trim();
+
+        // 如果值为空，则不进行限制
+        if (value === "") {
+            return;
+        }
+
+        // 如果值超过了5位整数，则截断为5位整数
+        if (value.length > 5) {
+            dBKariireGakuKingakuInput.value = value.substring(0, 5);//substring 是 JavaScript 中字符串对象的一个方法，用于截取字符串的一部分。
+            // 它可以接受两个参数，第一个参数指定截取的起始位置，第二个参数（可选）指定截取的结束位置。
+        }
+
+        // 如果值不是数字，则将输入框的值设为0
+        if (!/^\d+$/.test(value)) {
+            dBKariireGakuKingakuInput.value = "0";
+        }
+    });
+   //金利は10.00％を超えられない。小数点第3位以下は切捨てください。小数点（2桁）が足りない場合は、自動的にゼロで埋められる
+    dBKariireGakuKinriInput.addEventListener("blur", function() {
+        // 获取输入框中的值
+        const value = dBKariireGakuKinriInput.value.trim();
+
+        // 如果值为空，则将输入框的值设为0.00
+        if (value === "") {
+            dBKariireGakuKinriInput.value = "0.00";
+            return;
+        }
+
+        // 将值转换为浮点数，并截断至小数点后第二位
+        let floatValue = parseFloat(value);
+        if (isNaN(floatValue)) {
+            dBKariireGakuKinriInput.value = "0.00";
+            return;
+        }
+        //Math.min(floatValue, 10) 表示获取 floatValue 和 10 中的最小值。如果 floatValue 的值大于 10
+        // ，则返回 10。如果 floatValue 的值小于或等于 10，则返回 floatValue 的值。
+        // 这一行代码确保了输入框中的值不会超过 10。
+        floatValue = Math.min(floatValue, 10).toFixed(2);
+
+        // 将输入框的值设为截断后的值，并自动补全小数位为00
+        dBKariireGakuKinriInput.value = floatValue.padEnd(5, '0');
+    });
+
+
+
+//整数2位
+    dBKariireGakuHensaiKikanInput.addEventListener("input", function() {
+        // 获取输入框中的值
+        const value = dBKariireGakuHensaiKikanInput.value.trim();
+
+        // 如果值为空，则不进行限制
+        if (value === "") {
+            return;
+        }
+
+        // 如果值超过了5位整数，则截断为5位整数
+        if (value.length > 2) {
+            dBKariireGakuHensaiKikanInput.value = value.substring(0, 2);//substring 是 JavaScript 中字符串对象的一个方法，用于截取字符串的一部分。
+            // 它可以接受两个参数，第一个参数指定截取的起始位置，第二个参数（可选）指定截取的结束位置。
+        }
+
+        // 如果值不是数字，则将输入框的值设为0
+        if (!/^\d+$/.test(value)) {
+            dBKariireGakuHensaiKikanInput.value = "0";
+        }
+    });
+//自动计算金利
+    dBHensaiHouhouInput.addEventListener("change", function() {
+        const hensaiHouhou = dBHensaiHouhouInput.value;
+        const kinri = parseFloat(dBKariireGakuKinriInput.value);//借入希望額_金利(不能超过10.00)
+        const hensaiKikan = parseInt(dBKariireGakuHensaiKikanInput.value);//借入希望額_返済期間
+
+        if (hensaiHouhou === "01 元利均等返済") {
+            // 元利均等返済的计算
+            const nenkanHensaiGaku = (1000000 * kinri / 12 / 100) * Math.pow(1 + (kinri / 12 / 100), hensaiKikan * 12);
+           if(nenkanHensaiGaku>100000000){
+               alert("超过9位了哥")
+               dBKariireGakuNenHensai12No1Input.value = "上に正しい値を入力してください";
+           }else{
+               dBKariireGakuNenHensai12No1Input.value = nenkanHensaiGaku.toFixed(0);
+           }
+            //const limitedNenkanHensaiGaku = Math.min(nenkanHensaiGaku, 999999999);
+            //dBKariireGakuNenHensai12No1Input.value = limitedNenkanHensaiGaku.toFixed(0);
+        } else if (hensaiHouhou === "02 元金均等返済") {
+            // 元金均等返済的计算
+            const nenkanKingetsuHensaiGaku = 1000000 * kinri / 12 / 100 + 1000000 / (hensaiKikan * 12);
+            const limitednenkanKingetsuHensaiGaku = Math.min(nenkanKingetsuHensaiGaku, 999999999);
+            dBKariireGakuNenHensai12No1Input.value = limitednenkanKingetsuHensaiGaku.toFixed(0);
+        } else {
+            dBKariireGakuNenHensai12No1Input.value = "";
+        }
+    });
+
+    //TODO:08その他の借入内容(「その他の借入内容」の項目のいずれかを入力した場合、全ての項目を入力する必要があります)
+
+    dBSonotaNameInput.addEventListener('blur', checkInputs);
+    dBSonotaKingakuInput.addEventListener('blur', checkInputs);
+    dBSonotaHensaiKikanInput.addEventListener('blur', checkInputs);
+    dBSonotaNenHensai12No1Input.addEventListener('blur', checkInputs);
+    dBSogoKingakuInput.addEventListener('blur', checkInputs);
+    dBKinyuKikanNameInput.addEventListener('blur', checkInputs);
+    function checkInputs() {
+        if (dBSonotaNameInput.value && dBSonotaKingakuInput.value && dBSonotaHensaiKikanInput.value && dBSonotaNenHensai12No1Input.value && dBHiyouTotal1Input.value && dBSogoKingakuInput.value && dBKinyuKikanNameInput.value) {
+            // 所有输入框都有值，可以提交表单
+        } else {
+            // 有一个或多个输入框没有值，禁止提交或弹出错误提示
+            alert("その他の借入内容」の項目のいずれかを入力した場合、全ての項目を入力する必要があります")
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    dBSonotaNameInput.addEventListener("input", function() {
+        if (this.value.length > 100) {
+            alert("100以内を入力してください。")
+           // this.value = this.value.slice(0, 100);
+        }
+    });
+    //五位整数
+    dBSonotaKingakuInput.addEventListener("input",function (){
+        // 获取输入框中的值
+        const value = dBSonotaKingakuInput.value.trim();
+
+        // 如果值为空，则不进行限制
+        if (value === "") {
+            return;
+        }
+
+        // 如果值超过了5位整数，则截断为5位整数
+        if (value.length > 5) {
+            dBSonotaKingakuInput.value = value.substring(0, 5);//substring 是 JavaScript 中字符串对象的一个方法，用于截取字符串的一部分。
+            // 它可以接受两个参数，第一个参数指定截取的起始位置，第二个参数（可选）指定截取的结束位置。
+        }
+
+        // 如果值不是数字，则将输入框的值设为0
+        if (!/^\d+$/.test(value)) {
+            dBSonotaKingakuInput.value = "0";
+        }
+    });
+
+    //二位整数
+    dBSonotaHensaiKikanInput.addEventListener("input", function (){
+        const value = dBSonotaHensaiKikanInput.value.trim();
+        if (value === "") {
+            return;
+        }
+
+        // 如果值超过了5位整数，则截断为5位整数
+        if (value.length > 2) {
+            dBSonotaHensaiKikanInput.value = value.substring(0, 2);//substring 是 JavaScript 中字符串对象的一个方法，用于截取字符串的一部分。
+            // 它可以接受两个参数，第一个参数指定截取的起始位置，第二个参数（可选）指定截取的结束位置。
+        }
+
+        // 如果值不是数字，则将输入框的值设为0
+        if (!/^\d+$/.test(value)) {
+            dBSonotaHensaiKikanInput.value = "0";
+        }
+    });
+
+
+    //算金利
+    //dBSonotaKingakuInput.addEventListener('input', calculateTotalSonota);//その他_借入金額（万円）
+    dBSonotaHensaiKikanInput.addEventListener('input', calculateTotalSonota);//その他_返済期間　（年）
+    function calculateTotalSonota() {
+        // 将输入框的值转换成数字，如果无法转换则设为0
+        //const dBSonotaKingaku = parseInt(dBSonotaKingakuInput.value) || 0;
+        const SonotaHensaiKikan = parseInt(dBSonotaHensaiKikanInput.value) || 0;
+
+        // 计算总和
+        //元金均等返済（1000000 * 金利 / 12 / 100  ）+ 1000000/（返済期間*12）
+        const SonotaNenHensai12=1000000 * dBKariireGakuKinriInput.value/ 12 / 100 + 1000000 / (SonotaHensaiKikan * 12);
+        const limitedSonotaNenHensai12 = Math.min(SonotaNenHensai12, 999999999);
+        dBSonotaNenHensai12No1Input.value = limitedSonotaNenHensai12.toFixed(0);
+
+    }
+
+
+    dBHiyouTotal1Input.addEventListener('input', calculateTotal1);
+    dBSonotaKingakuInput.addEventListener('input', calculateTotal1);
+
+    function calculateTotal1() {
+        // 将输入框的值转换成数字，如果无法转换则设为0
+        // 计算总和parseInt(dBHiyouTotal1Input.value) || 0;
+        const total2 =  parseInt(dBHiyouTotal1Input.value) || 0;
+        const total3 =parseInt(dBSonotaKingakuInput.value) || 0;
+        const total1 =total2+total3;
+        dBSogoKingakuInput.value = total1;
+        }
+        // 将总和赋值给"費用合計"这个input元素
+
+
+    nextButton.addEventListener('click', () => {
+        // const seventhTable = document.getElementsByTagName('table')[6];
+        // seventhTable.addEventListener('submit', function(event) {
+        //     if (!(dBSonotaNameInput.value && dBSonotaKingakuInput.value && dBSonotaHensaiKikanInput.value && dBSonotaNenHensai12No1Input.value && dBHiyouTotal1Input.value && dBSogoKingakuInput.value && dBKinyuKikanNameInput.value)) {
+        //         event.preventDefault();
+        //         alert("その他の借入内容」の項目のいずれかを入力した場合、全ての項目を入力する必要があります");
+        //     }
+        // });
+        fetch('/Hisai/Hisaiadd', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                dBHisaijutakuShurui,
+                dBHisaijutakuShoyuu,
+                dBHigaiJokyo,
+                dBHigaiJokyoDaikiboHankaiOrHankai,
+                dBBukken_Menseki,
+                aPLBukkenAddressTodofuken,
+                dBBukkenAddressShigun,
+                dBBukkenAddressChoson,
+                aPLBukkenAddressBanchi,
+                aPLBukkenAddressPostCode3,
+                dBBousaiSyudanItenJigyo,
+                dBBukkenShikichiNoShoyuKankei,
+                dBBukken_Tatemono_Jutaku,
+                dBBukken_Tatemono_HiJutaku,
+                dBBukken_Kozo,
+                dBBukken_TatekataKodateKeishiki,
+                dBNyukyoYoteiDateYear,
+                dBNyukyoYoteiDateMonth,
+                dBJutakuYoto,
+                dBBukken_KojiKanryoDate_Year,
+                dBBukken_KojiKanryoDate_Month,
+                dBShikinDateTochiShikinYear,
+                dBShikinDateTochiShikinMonth,
+                dBShikinDateChukanShikinYear,
+                dBShikinDateChukanShikinMonth,
+                dBShikinDateSaishuShikinYear,
+                dBShikinDateSaishuShikinMonth,
+                dBKariireIninKaishaName,
+                dBChukaiHanbaiNameKana,
+                dBChukaiHanbaiTantoshaNameMei,
+                dBChukaiHanbaiTantoshaNameSei,
+                dBHiyouKensetsuHi,
+                dBHiyouTochiSyotokuHi,
+                dBHiyouTotal,
+                dBKariireGakuKingaku,
+                dBKariireGakuKinri,
+                dBKariireGakuHensaiKikan,
+                dBKariireGakuNenHensai12No1,
+                dBHensaiHouhou,
+                dBHisaiShinzokuDokyoAri,
+                dBSueokiKikanNoNensu,
+                dBSonotaName,
+                dBSonotaKingaku,
+                dBSonotaHensaiKikan,
+                dBSonotaNenHensai12No1,
+                dBSogoKingaku,
+                dBKinyuKikanName,
+                })
+        })
+            // 所有信息都正确的话就传输到数据库
+            // すべての情報が正しい場合は、データベースに転送する
+            .then(response => {
+                if (response.ok) {
+                    alert('保存成功');
+
+
+                } else {
+                    return response.text().then(text => {
+                        throw new Error(text)
+                    });
+                }
+            })
+            // 如果存在有问题的输入, 就alert提示错误
+            // 入力に異常がある場合、エラーで警告する
+            .catch(error => {
+                alert(error.message);
+            });
+    });
+
+
+</script>
+</body>
+</html>

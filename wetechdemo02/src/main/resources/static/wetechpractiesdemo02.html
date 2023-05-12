@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="Jquery.js"></script>
+    <script src="birthday.js"></script>
+  <style>
+    body {
+      margin: 0px;
+      padding: 0px;
+      background-image: url('123.jpg');
+    }
+    .header{
+        /*大小*/
+        font-size: 22px;
+        /*中心合わせ*/
+        text-align: center;
+
+        /*境界*/
+        margin:20px auto;
+    }
+    .system{
+        /*行内块*/
+
+        width: 400px;
+        height: 30px;
+        /*text-align: left;*/
+        text-align: start;
+    }
+    .user{
+        width: 600px;
+        height: 30px;
+        text-align: left;
+    }
+    .must {
+        display: inline;
+        width: 400px;
+        height: 30px;
+        text-align: end;
+        background: red;
+        color: white;
+    }
+    .submit{
+        text-align: center;
+    }
+    .button{
+        width: 100px;
+        height: 30px;
+        line-height: 15px;
+        background: orange;
+        color: #ffffff;
+        font-size: 13px;
+        border-radius: 13px;
+        text-align: center;
+        border: none;
+    }
+    span{
+        color: red;
+        font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+<form action="" >
+    <p>Welcome, <span id="name"></span><span id="name1"></span></p >
+    <table border="1" cellspacing="0" align="center">
+        <caption class="header">申込本人</caption>
+        <tr>
+            <td class="system">氏名&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <div class="must">必须</div></td>
+            <td class="user">姓：<input type="text" id="cpNameSei">
+                <span class="worry" id="worrysei"></span>
+                <br>
+                名：<input type="text" id="cpNameMei">
+                <span class="worry" id="worrymei"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="system">氏名(カタカナ)&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <div class="must">必须</div></td>
+            <td class="user">セイ：<input type="text" id="cpNamekataSei">
+                <span class="worry" id="worrykatasei"></span>
+                <br>
+                メイ：<input type="text" id="cpNamekataMei">
+                <span class="worry" id="worrykatamei"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="system">担保提供物&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="must">必须</div></td>
+            <td class="user">
+                <select name="TanpoMono" id="cpTanpoMono">
+                    <option value="-1" selected ="selected">選択してください</option>
+                    <option >01 建物のみ</option>
+                    <option>02土地のみ</option>
+                    <option >03 建物・土地</option>
+                </select>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td class="system">性别&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <div class="must">必须</div></td>
+            <td class="user">
+                <select name="gander" id="cpGander">
+                    <option  value="-1" selected ="selected">選択してください</option>
+                    <option>男</option>
+                    <option>女</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="system">生年月日&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <div class="must">必须</div></td>
+            <td class="user">
+                <input type="date" id="cpBirthDateYear">
+            </td>
+        </tr>
+        <tr>
+            <td class="system">年龄</td>
+            <td class="user">
+                <input type="text" id="cpBirthDate">歳
+            </td>
+        </tr>
+        <tr>
+            <td class="system">担保者となる理由&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="must">必须</div></td>
+            <td class="user">
+                <input type="checkbox" name="cpMoushikomi" id="cpMoushikomi1" value="01親子リレー返済">01親子リレー返済
+                <input type="checkbox" name="cpMoushikomi" id="cpMoushikomi2" value="02 収入合算（同居親族）">02 収入合算（同居親族）
+                <input type="checkbox" name="cpMoushikomi" id="cpMoushikomi3" value="03 収入合算（非同居直系親族）">03 収入合算（非同居直系親族）
+                <input type="checkbox" name="cpMoushikomi" id="cpMoushikomi4" value="04 その他">04 その他
+            </td>
+        </tr>
+        <tr>
+            <td class="system">申請者と関係&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="must">必须</div></td>
+            <td class="user">
+                <select name="cpRentaiSaimushaToOnaji" id="cpRentaiSaimushaToOnaji">
+                    <option value="-1" selected ="selected">選択してください</option>
+                    <option>配偶者</option>
+                    <option>婚約者</option>
+                    <option>親</option>
+                    <option>子</option>
+                    <option>その他</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="system">携帯電話&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="must">必须</div></td>
+            <td class="user"><input type="text" id="cpPhone">
+                <span id="tsphone"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="system">職業&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="must">必须</div></td>
+            <td class="user">
+                <select name="cpHonninShokugyoCode" id="cpHonninShokugyoCode">
+                    <option value="-1" selected ="selected">選択してください</option>
+                    <option>01 自営業</option>
+                    <option>02 パート/アルバイト</option>
+                    <option>03 公務員</option>
+                    <option> 04 会社員</option>
+                    <option>05 その他</option>
+                    <option>06無職</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="system" >勤務先の名称</td>
+
+            <td class="user"><textarea name="address" id="cpHonninKinmusakiName" cols="30" rows="10"></textarea></td>
+        </tr>
+
+
+        <tr>
+            <td class="system" >担保理由 <br><div class="must">必须</div><div>担保理由は50文字以上～200文字未満で具体的にわかりやすい表現で記述してください</div></td>
+            <td class="user"><textarea name="reason" id="cpReason" cols="30" rows="10" ></textarea>
+                <span id="textCount">0</span>/500
+                <br>
+                <button onclick="saveTextareaContent()" type="button" class="button" id="timesave">一時保存</button>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td class="system">個人申請者と同じ</td>
+            <td class="user" id="cpSame"><input type="radio" name="same" id="same1" value="はい">はい
+            <input type="radio" name="same" id="same2" value="いいえ">いいえ</td>
+        </tr>
+    </table>
+</form>
+<br>
+    <div class="submit">
+        <button type="button" class="button" id="returnpage">戻る</button>
+        <button type="button" class="button" id="next">次へ</button>
+    </div>
+<script>
+    let tanpomonoInput = document.getElementById('cpTanpoMono');
+    let seiInput = document.getElementById('cpNameSei');
+    let meiInput = document.getElementById('cpNameMei');
+    let kataseiInput = document.getElementById('cpNamekataSei');
+    let katameiInput = document.getElementById('cpNamekataMei');
+    let sexInput = document.getElementById('cpGander');
+    let birthInput = document.getElementById('cpBirthDateYear');
+    let ageInput = document.getElementById('cpBirthDate');
+    let RentaiSaimushaToOnajiInput = document.getElementById('cpRentaiSaimushaToOnaji');
+    let PhoneInput = document.getElementById('cpPhone');
+    let HonninShokugyoCodeInput = document.getElementById('cpHonninShokugyoCode');
+    let HonninKinmusakiNameInput = document.getElementById('cpHonninKinmusakiName');
+    let ReasonInput = document.getElementById('cpReason');
+    //let SameInput = document.getElementById('cpSame');
+    let returnpageButton = document.getElementById('returnpage');
+    let nextButton = document.getElementById('next');
+
+
+
+    returnpageButton.addEventListener('click', () => {
+        let cpTanpoMono = tanpomonoInput.options[tanpomonoInput.selectedIndex].value.trim();
+        let cpNameSei = seiInput.value.trim();
+        let cpNameMei = meiInput.value.trim();
+        let cpNamekataSei = kataseiInput.value.trim();
+        let cpNamekataMei = katameiInput.value.trim();
+        let cpGander = sexInput.options[sexInput.selectedIndex].value.trim();
+        let cpBirthDateYear = birthInput.value.trim();
+        let cpBirthDate = ageInput.value.trim();
+        let cpMoushikomi = getMoushikomiValues();
+        function getMoushikomiValues() {
+            let Moushikomi = document.getElementsByName("cpMoushikomi");
+            let MoushikomiValue = '';
+            let checked = false;
+            for (let i = 0; i < Moushikomi.length; i++) {
+
+                if (Moushikomi[i].checked === true) {
+                    if (MoushikomiValue !== "") {
+                        MoushikomiValue = MoushikomiValue + "," + Moushikomi[i].value;
+                        checked = true;
+                    } else {
+                        MoushikomiValue = Moushikomi[i].value;
+                        checked = true;
+                    }
+                }
+            }
+        }
+        let cpRentaiSaimushaToOnaji = RentaiSaimushaToOnajiInput.options[RentaiSaimushaToOnajiInput.selectedIndex].value.trim();
+        let cpPhone = PhoneInput.value.trim();
+        let cpHonninShokugyoCode = HonninShokugyoCodeInput.options[HonninShokugyoCodeInput.selectedIndex].value.trim();
+        let cpHonninKinmusakiName = HonninKinmusakiNameInput.value.trim();
+        let cpReason = ReasonInput.value.trim();
+        let Same = document.getElementsByName("same");
+        let SameValue = '';
+        for (let i=0;i<Same.length;i++) {
+            if (Same[i].checked === true) {
+                SameValue = Same[i].value;
+            }
+        }
+
+        let cpSame = SameValue.trim()
+
+
+
+
+        fetch('/collateralProvider/adds', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                cpTanpoMono,
+                cpNameSei,
+                cpNameMei,
+                cpNamekataSei,
+                cpNamekataMei,
+                cpGander,
+                cpBirthDateYear,
+                cpBirthDate,
+                cpMoushikomi,
+                cpRentaiSaimushaToOnaji,
+                cpPhone,
+                cpHonninKinmusakiName,
+                cpHonninShokugyoCode,
+                cpReason,
+                cpSame})
+        })
+            // 所有信息都正确的话就传输到数据库
+            // すべての情報が正しい場合は、データベースに転送する
+            .then(response => {
+                if (response.ok) {
+                    alert('要退回去吗');
+                    window.location.href="wetechpractiesdemo.html"
+
+                } else {
+                    return response.text().then(text => {
+                        throw new Error(text)
+                    });
+                }
+            })
+            // 如果存在有问题的输入, 就alert提示错误
+            // 入力に異常がある場合、エラーで警告する
+            .catch(error => {
+                alert(error.message);
+            });
+    });
+
+    nextButton.addEventListener('click', () => {
+
+        let cpTanpoMono = tanpomonoInput.options[tanpomonoInput.selectedIndex].value.trim();
+        let cpNameSei = seiInput.value.trim();
+        let cpNameMei = meiInput.value.trim();
+        let cpNamekataSei = kataseiInput.value.trim();
+        let cpNamekataMei = katameiInput.value.trim();
+        let cpGander = sexInput.options[sexInput.selectedIndex].value.trim();
+        let cpBirthDateYear = birthInput.value.trim();
+        let cpBirthDate = ageInput.value.trim();
+        function getMoushikomiValues() {
+            let Moushikomi = document.getElementsByName("cpMoushikomi");
+            let MoushikomiValue = '';
+            let checked = false;
+            for (let i = 0; i < Moushikomi.length; i++) {
+
+                if (Moushikomi[i].checked === true) {
+                    if (MoushikomiValue !== "") {
+                        MoushikomiValue = MoushikomiValue + "," + Moushikomi[i].value;
+                        checked = true;
+                    } else {
+                        MoushikomiValue = Moushikomi[i].value;
+                        checked = true;
+                    }
+                }
+            }
+
+            if (!checked) {
+                alert("担保者となる理由を選択してください");
+                return;
+            }
+            return MoushikomiValue;
+        }
+        let cpMoushikomi = getMoushikomiValues();
+        //let cpMoushikomi = getMoushikomiValues().trim();
+        let cpRentaiSaimushaToOnaji = RentaiSaimushaToOnajiInput.options[RentaiSaimushaToOnajiInput.selectedIndex].value.trim();
+        let cpPhone = PhoneInput.value.trim();
+        let cpHonninShokugyoCode = HonninShokugyoCodeInput.options[HonninShokugyoCodeInput.selectedIndex].value.trim();
+        let cpHonninKinmusakiName = HonninKinmusakiNameInput.value.trim();
+        let cpReason = ReasonInput.value.trim();
+        let Same = document.getElementsByName("same");
+            let SameValue = '';
+            for (let i=0;i<Same.length;i++) {
+                if (Same[i].checked === true) {
+                    SameValue = Same[i].value;
+                }
+            }
+            let cpSame = SameValue.trim()
+        let check1 = /^[\u4E00-\u9FA5]+$/;
+        if (check1.test(seiInput.value)===false) {
+            alert('姓を漢字で入力してください')
+            return;
+        }
+        if (seiInput.value.length>40) {
+            alert('入力した姓が長すぎます。40字内で再入力してください。')
+            return;
+        }
+        if (check1.test(meiInput.value)===false) {
+            alert('名を漢字で入力してください')
+            return;
+        }
+        if (meiInput.value.length>40) {
+            alert('入力した名が長すぎます。40字内で再入力してください。')
+            return;
+        }
+        let check2 = /^[ｧ-ﾝﾞﾟ]+$/;
+        if (check2.test(kataseiInput.value)===false) {
+            alert('セイをカタカナでで入力してください')
+            return;
+        }
+        if (kataseiInput.value.length>40) {
+            alert('入力したセイが長すぎます。40字内で再入力してください。')
+            return;
+        }
+        if (check2.test(katameiInput.value)===false) {
+            alert('メイをカタカナでで入力してください')
+            return;
+        }
+        if (katameiInput.value.length>40) {
+            alert('入力したメイが長すぎます。40字内で再入力してください。')
+            return;
+        }
+
+        if(tanpomonoInput.value==="-1"){
+            alert("担保提供物を選択してください");
+            return;
+            }
+
+        if(sexInput.value==="-1"){
+            alert("性別を選択してください");
+            return;
+        }
+
+        if(RentaiSaimushaToOnajiInput.value ==="-1"){
+            alert("申請者と関係 を選択してください");
+            return;
+        }
+
+        let check4 = /^\d{11}$/;
+        if (check4.test(PhoneInput.value)===false) {
+            alert('携帯電話を11個数字で入力してください。')
+            return;
+        }
+
+        if(HonninShokugyoCodeInput.value ==="-1"){
+            alert("職業を選択してください");
+            return;
+        }
+
+        if (ReasonInput.value.length>200||ReasonInput.value.length<55) {
+            alert('担保理由は50文字以上～200文字未満で具体的にわかりやすい表現で記述してください。')
+            return;
+        }
+
+        fetch('/collateralProvider/adds', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                cpTanpoMono,
+                cpNameSei,
+                cpNameMei,
+                cpNamekataSei,
+                cpNamekataMei,
+                cpGander,
+                cpBirthDateYear,
+                cpBirthDate,
+                cpMoushikomi,
+                cpRentaiSaimushaToOnaji,
+                cpPhone,
+                cpHonninKinmusakiName,
+                cpHonninShokugyoCode,
+                cpReason,
+                cpSame})
+        })
+            // 所有信息都正确的话就传输到数据库
+            // すべての情報が正しい場合は、データベースに転送する
+            .then(response => {
+                if (response.ok) {
+                    alert('保存成功');
+
+
+                } else {
+                    return response.text().then(text => {
+                        throw new Error(text)
+                    });
+                }
+            })
+            // 如果存在有问题的输入, 就alert提示错误
+            // 入力に異常がある場合、エラーで警告する
+            .catch(error => {
+                alert(error.message);
+            });
+    })
+
+    // 将生日日期填充到年龄输入框中，并计算年龄
+    ageInput.value = calculateAge(birthInput.value);
+
+    // 添加事件监听器，当生日日期更改时自动计算年龄
+    birthInput.addEventListener("input", function() {
+        // 检查日期是否合法，如果不合法则将其重置为当前日期
+        var currentDate = getCurrentDate();
+        if (birthInput.value > currentDate) {
+            birthInput.value = currentDate;
+        }
+        ageInput.value = calculateAge(birthInput.value);
+    });
+
+    // 计算年龄的函数
+    function calculateAge(cpBirthDateYear) {
+        var birthDate = new Date(cpBirthDateYear);
+        var today = new Date();
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var monthDiff = today.getMonth() - birthDate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    }
+    // 获取当前日期的函数
+    function getCurrentDate() {
+        var today = new Date();
+        var yyyy = today.getFullYear();
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var dd = String(today.getDate()).padStart(2, '0');
+        return yyyy + "-" + mm + "-" + dd;
+    }
+
+
+    //显示字数
+ ReasonInput.addEventListener('input',function (){
+     var len = txtCount(this);
+     document.getElementById('textCount').innerHTML = len;
+ })
+    function txtCount(ReasonInput) {
+        var val = ReasonInput.value;
+        var eLen = val.length;
+        return eLen;
+    }
+
+
+    //一时保存
+    function saveTextareaContent() {
+        var textarea = document.getElementById("cpReason");
+        var content = textarea.value;
+
+        // 将内容保存到本地存储
+        localStorage.setItem("savedContent", content);
+
+        console.log("保存的内容为: " + content);
+    }
+
+    // 页面加载时检查是否有保存的内容，并在文本区域中恢复
+    window.addEventListener("DOMContentLoaded", function() {
+        var savedContent = localStorage.getItem("savedContent");
+        if (savedContent) {
+            var textarea = document.getElementById("cpReason");
+            textarea.value = savedContent;
+        }
+    });
+
+
+
+
+    function hankaku2Zenkaku(str) {
+        return str.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (s) {
+            return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+        });
+    };
+    function zenkana2Hankana(str) {
+        let kanaMap = {
+            "ガ": "ｶﾞ", "ギ": "ｷﾞ", "グ": "ｸﾞ", "ゲ": "ｹﾞ", "ゴ": "ｺﾞ",
+            "ザ": "ｻﾞ", "ジ": "ｼﾞ", "ズ": "ｽﾞ", "ゼ": "ｾﾞ", "ゾ": "ｿﾞ",
+            "ダ": "ﾀﾞ", "ヂ": "ﾁﾞ", "ヅ": "ﾂﾞ", "デ": "ﾃﾞ", "ド": "ﾄﾞ",
+            "バ": "ﾊﾞ", "ビ": "ﾋﾞ", "ブ": "ﾌﾞ", "ベ": "ﾍﾞ", "ボ": "ﾎﾞ",
+            "パ": "ﾊﾟ", "ピ": "ﾋﾟ", "プ": "ﾌﾟ", "ペ": "ﾍﾟ", "ポ": "ﾎﾟ",
+            "ヴ": "ｳﾞ", "ヷ": "ﾜﾞ", "ヺ": "ｦﾞ",
+            "ア": "ｱ", "イ": "ｲ", "ウ": "ｳ", "エ": "ｴ", "オ": "ｵ",
+            "カ": "ｶ", "キ": "ｷ", "ク": "ｸ", "ケ": "ｹ", "コ": "ｺ",
+            "サ": "ｻ", "シ": "ｼ", "ス": "ｽ", "セ": "ｾ", "ソ": "ｿ",
+            "タ": "ﾀ", "チ": "ﾁ", "ツ": "ﾂ", "テ": "ﾃ", "ト": "ﾄ",
+            "ナ": "ﾅ", "ニ": "ﾆ", "ヌ": "ﾇ", "ネ": "ﾈ", "ノ": "ﾉ",
+            "ハ": "ﾊ", "ヒ": "ﾋ", "フ": "ﾌ", "ヘ": "ﾍ", "ホ": "ﾎ",
+            "マ": "ﾏ", "ミ": "ﾐ", "ム": "ﾑ", "メ": "ﾒ", "モ": "ﾓ",
+            "ヤ": "ﾔ", "ユ": "ﾕ", "ヨ": "ﾖ",
+            "ラ": "ﾗ", "リ": "ﾘ", "ル": "ﾙ", "レ": "ﾚ", "ロ": "ﾛ",
+            "ワ": "ﾜ", "ヲ": "ｦ", "ン": "ﾝ",
+            "ァ": "ｧ", "ィ": "ｨ", "ゥ": "ｩ", "ェ": "ｪ", "ォ": "ｫ",
+            "ッ": "ｯ", "ャ": "ｬ", "ュ": "ｭ", "ョ": "ｮ",
+            "。": "｡", "、": "､", "ー": "ｰ", "「": "｢", "」": "｣", "・": "･"
+        }
+        let reg = new RegExp('(' + Object.keys(kanaMap).join('|') + ')', 'g');
+        return str
+            .replace(reg, function (match) {
+                return kanaMap[match];
+            })
+            .replace(/゛/g, 'ﾞ')
+            .replace(/゜/g, 'ﾟ');
+    };
+    kataseiInput.oninput = function () {
+        kataseiInput.value=zenkana2Hankana(kataseiInput.value)
+    };
+    // 将名的カナ全角转换为半角
+    // 名のカナ全角を半角に変換する
+    katameiInput.oninput = function () {
+        katameiInput.value=zenkana2Hankana(katameiInput.value)
+    };
+    PhoneInput.oninput = function () {
+        PhoneInput.value=hankaku2Zenkaku(PhoneInput.value)
+    };
+
+
+
+    seiInput.onblur = function () {
+        let worrysei = document.getElementById('worrysei');
+        let check1 = /^[\u4E00-\u9FA5]+$/;
+        if (check1.test(seiInput.value)===false) {
+            worrysei.innerHTML = '姓を漢字で入力してください';
+        } else if (seiInput.value.length>40) {
+            worrysei.innerHTML = '入力した姓が長すぎます。40字内で再入力してください。';
+        }
+        else {
+            worrysei.innerHTML = '';
+        }
+    };
+
+
+    meiInput.onblur = function () {
+        let worrymei = document.getElementById('worrymei');
+        let check1 = /^[\u4E00-\u9FA5]+$/;
+        if (check1.test(meiInput.value)===false) {
+            worrymei.innerHTML = '名を漢字で入力してください';
+        } else if (mingInput.value.length>40) {
+            worrymei.innerHTML = '入力した名が長すぎます。40字内で再入力してください。';
+        }
+        else {
+            worrymei.innerHTML = '';
+        }
+    };
+
+    kataseiInput.onblur = function () {
+        let worrykatasei = document.getElementById('worrykatasei');
+        let check2 = /^[ｧ-ﾝﾞﾟ]+$/;
+        if (check2.test(kataseiInput.value)===false) {
+            worrykatasei.innerHTML = 'セイをカタカナでで入力してください';
+        } else if (kataseiInput.value.length>40) {
+            worrykatasei.innerHTML = '入力したセイが長すぎます。40字内で再入力してください。';
+        }
+        else {
+            worrykatasei.innerHTML = '';
+        }
+    };
+    katameiInput.onblur = function () {
+        let worrykatamei = document.getElementById('worrykatamei');
+        let check2 = /^[ｧ-ﾝﾞﾟ]+$/;
+        if (check2.test(kataseiInput.value)===false) {
+            worrykatamei.innerHTML = 'セイをカタカナでで入力してください';
+        } else if (kataseiInput.value.length>40) {
+            worrykatamei.innerHTML = '入力したセイが長すぎます。40字内で再入力してください。';
+        }
+        else {
+            worrykatamei.innerHTML = '';
+        }
+    };
+
+    PhoneInput.onblur = function () {
+        let telSave = PhoneInput.value;
+        localStorage.setItem("tel", telSave);
+        let tsphone = document.getElementById('tsphone');
+        let check4 = /^\d{11}$/;
+        if (check4.test(PhoneInput.value)===false) {
+            tsphone.innerHTML = '携帯電話を11個数字で入力してください';
+        }
+        else {
+            tsphone.innerHTML = '';
+        }
+    };
+
+
+
+
+    var name = localStorage.getItem("cpNameSei");
+    if (name) {
+        console.log("qqqq"+name)
+        document.getElementById("name").innerHTML = name;
+    }
+
+    var name = localStorage.getItem("cpNameMei");
+    if (name) {
+        console.log("qwer"+name)
+        document.getElementById("name1").innerHTML = name;
+    }
+
+
+    // 监听同居和别居单选框的变化
+    // 获取同居和别居单选框
+    const cpsameRadio = document.querySelector('input[name="same"][value="はい"]');
+    const cpdiffRadio = document.querySelector('input[name="same"][value="いいえ"]');
+
+    cpsameRadio.addEventListener('change', function() {
+        // 如果选择同居，禁用输入框
+        var  phone1 = localStorage.getItem("cpPhone");
+        document.getElementById('cpPhone').value= phone1;
+        PhoneInput.disabled = true;
+
+        var  address1 = localStorage.getItem("cpKinmusakiName");
+        document.getElementById('cpHonninKinmusakiName').value= address1;
+
+        HonninKinmusakiNameInput.disabled = true;
+    });
+
+    cpdiffRadio.addEventListener('change', function() {
+        // 如果选择别居，启用输入框
+        PhoneInput.disabled = false;
+        HonninKinmusakiNameInput.disabled = false;
+        document.getElementById('cpPhone').value = "";
+        document.getElementById('cpHonninKinmusakiName').value = "";
+
+    });
+
+
+
+</script>
+</body>
+</html>
