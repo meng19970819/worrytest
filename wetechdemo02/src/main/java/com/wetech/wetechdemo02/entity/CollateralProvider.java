@@ -12,15 +12,6 @@ public class CollateralProvider {
     private String cpNamekataMei; // メイ
     private String cpGander;//
     private String cpBirthDateYear;//
-
-    public String getCpTanpoMono() {
-        return cpTanpoMono;
-    }
-
-    public void setCpTanpoMono(String cpTanpoMono) {
-        this.cpTanpoMono = cpTanpoMono;
-    }
-
     private String cpBirthDate;//
     private String cpMoushikomi;
     private String cpRentaiSaimushaToOnaji ; //
@@ -29,5 +20,6 @@ public class CollateralProvider {
     private String cpHonninKinmusakiName; //
     private String cpReason; //
     private String cpSame; //
+
 
 }

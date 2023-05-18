@@ -412,6 +412,8 @@
             alert('担保理由は50文字以上～200文字未満で具体的にわかりやすい表現で記述してください。')
             return;
         }
+        localStorage.setItem( "cpNameSei",cpNameSei);
+        localStorage.setItem( "cpNameMei",cpNameMei);
 
         fetch('/collateralProvider/adds', {
             method: 'POST',
@@ -680,6 +682,7 @@
 
     });
 
+    / 戻るボタン
 
 
 </script>

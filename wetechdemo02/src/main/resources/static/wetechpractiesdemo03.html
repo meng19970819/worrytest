@@ -125,7 +125,7 @@
 
         <tr>
             <td class="system">敷地の面積（㎡）</td>
-            <td><input type="text" style="margin-left: 50px;" id="dBBukken_Menseki">㎡
+            <td><input type="text" style="margin-left: 50px;" id="dBBukkenMenseki">㎡
                 <span class="before" id="worrydBBukken_Menseki"></span>
             </td>
 
@@ -197,7 +197,7 @@
 
         <tr>
             <td class="system">建物の床面積_住宅部分</td>
-            <td><input type="text" style="margin-left: 50px;" id=dBBukken_Tatemono_Jutaku>㎡
+            <td><input type="text" style="margin-left: 50px;" id=dBBukkenTatemonoJutaku>㎡
                 <span class="before" id="worrydBBukken_Tatemono_Jutaku"></span>
             </td>
 
@@ -205,7 +205,7 @@
 
         <tr>
             <td class="system">建物の床面積_非住宅部分</td>
-            <td><input type="text" style="margin-left: 50px;" id=dBBukken_Tatemono_HiJutaku>㎡
+            <td><input type="text" style="margin-left: 50px;" id=dBBukkenTatemonoHiJutaku>㎡
                 <span class="before" id="worrydBBukken_Tatemono_HiJutaku"></span>
             </td>
 
@@ -215,7 +215,7 @@
         <tr>
             <td class="system" >建物の構造（戸建形式）</td>
             <td style="padding-left: 50px;">
-                <select name="" id="dBBukken_Kozo">
+                <select name="" id="dBBukkenKozo">
                     <option value="-1" selected ="selected">選択してください</option>
                     <option >01木作</option>
                     <option >02耐火</option>
@@ -228,7 +228,7 @@
         <tr>
             <td class="system" >建て方</td>
             <td style="padding-left: 50px;">
-                <select name="" id="dBBukken_TatekataKodateKeishiki">
+                <select name="" id="dBBukkenTatekataKodateKeishiki">
                     <option value="-1" selected ="selected">選択してください</option>
                     <option >01一戸建て</option>
                     <option >02連続建て</option>
@@ -275,7 +275,7 @@
         <tr>
             <td class="system" >物件_工事完了予定年月_年</td>
             <td style="padding-left: 50px;">
-                <select name="" id="dBBukken_KojiKanryoDate_Year">
+                <select name="" id="dBBukkenKojiKanryoDateYear">
                     <option value="-1" selected ="selected">選択してください</option>
                 </select>
                 <span class="before" id="worrydBBukken_KojiKanryoDate_Year"></span>
@@ -285,7 +285,7 @@
         <tr>
             <td class="system" >物件_工事完了予定年月_月</td>
             <td style="padding-left: 50px;">
-                <select name="" id="dBBukken_KojiKanryoDate_Month">
+                <select name="" id="dBBukkenKojiKanryoDateMonth">
                     <option value="-1" selected ="selected">選択してください</option>
                 </select>
                 <span class="before" id="worrydBBukken_KojiKanryoDate_Month"></span>
@@ -557,7 +557,7 @@
 
         <tr >
             <td class="system">災害融資の借入希望額、その他の借入内容</td>
-            <td><input type="text" style="margin-left: 50px;" id="dBSogoKingaku" disabled>万円
+            <td><input type="text" style="margin-left: 50px;" id="dBSogoKingaku" disabled >万円
                 <span class="before" id="worrydBSogoKingaku"></span>
             </td>
 
@@ -576,12 +576,14 @@
     <button type="button" class="button" id="returnpage">戻る</button>
     <button type="button" class="button" id="next">次へ</button>
 </div>
+<!--<p>Welcome, <span ></span><span id="dBtantoushaName"></span></p >-->
+<!--<p>Welcome, <span ></span><span id="dBshinseishaName"></span></p >-->
 <script>
     let dBHisaijutakuShuruiInput = document.getElementById('dBHisaijutakuShurui');
     let dBHisaijutakuShoyuuInput = document.getElementById('dBHisaijutakuShoyuu');
     let dBHigaiJokyoInput = document.getElementById('dBHigaiJokyo');
     let dBHigaiJokyoDaikiboHankaiOrHankaiInput = document.getElementById('dBHigaiJokyoDaikiboHankaiOrHankai');
-    let dBBukken_MensekiInput = document.getElementById('dBBukken_Menseki');
+    let dBBukken_MensekiInput = document.getElementById('dBBukkenMenseki');
     let aPLBukkenAddressTodofukenInput = document.getElementById('aPLBukkenAddressTodofuken');
     let dBBukkenAddressShigunInput = document.getElementById('dBBukkenAddressShigun');
     let dBBukkenAddressChosonInput = document.getElementById('dBBukkenAddressChoson');
@@ -589,15 +591,15 @@
     let aPLBukkenAddressPostCode3Input = document.getElementById('aPLBukkenAddressPostCode3');
     let dBBousaiSyudanItenJigyoInput = document.getElementById('dBBousaiSyudanItenJigyo');
     let dBBukkenShikichiNoShoyuKankeiInput = document.getElementById('dBBukkenShikichiNoShoyuKankei');
-    let dBBukken_Tatemono_JutakuInput = document.getElementById('dBBukken_Tatemono_Jutaku');
-    let dBBukken_Tatemono_HiJutakuInput = document.getElementById('dBBukken_Tatemono_HiJutaku');
-    let dBBukken_KozoInput = document.getElementById('dBBukken_Kozo');
-    let dBBukken_TatekataKodateKeishikiInput = document.getElementById('dBBukken_TatekataKodateKeishiki');
+    let dBBukken_Tatemono_JutakuInput = document.getElementById('dBBukkenTatemonoJutaku');
+    let dBBukken_Tatemono_HiJutakuInput = document.getElementById('dBBukkenTatemonoHiJutaku');
+    let dBBukken_KozoInput = document.getElementById('dBBukkenKozo');
+    let dBBukken_TatekataKodateKeishikiInput = document.getElementById('dBBukkenTatekataKodateKeishiki');
     let dBNyukyoYoteiDateYearInput = document.getElementById('dBNyukyoYoteiDateYear');
     let dBNyukyoYoteiDateMonthInput = document.getElementById('dBNyukyoYoteiDateMonth');
     let dBJutakuYotoInput = document.getElementById('dBJutakuYoto');
-    let dBBukken_KojiKanryoDate_YearInput = document.getElementById('dBBukken_KojiKanryoDate_Year');
-    let dBBukken_KojiKanryoDate_MonthInput = document.getElementById('dBBukken_KojiKanryoDate_Month');
+    let dBBukken_KojiKanryoDate_YearInput = document.getElementById('dBBukkenKojiKanryoDateYear');
+    let dBBukken_KojiKanryoDate_MonthInput = document.getElementById('dBBukkenKojiKanryoDateMonth');
     let dBShikinDateTochiShikinYearInput = document.getElementById('dBShikinDateTochiShikinYear');
     let dBShikinDateTochiShikinMonthInput = document.getElementById('dBShikinDateTochiShikinMonth');
     let dBShikinDateChukanShikinYearInput = document.getElementById('dBShikinDateChukanShikinYear');
@@ -624,9 +626,10 @@
     let dBSonotaNenHensai12No1Input = document.getElementById('dBSonotaNenHensai12No1');
     let dBSogoKingakuInput = document.getElementById('dBSogoKingaku');
     let dBKinyuKikanNameInput = document.getElementById('dBKinyuKikanName');
-    //let dBtantoushaNameInput = document.getElementById('dBtantoushaName');
-    //let dBshinseishaNameInput = document.getElementById('dBshinseishaName');
+    let dBtantoushaNameInput = document.getElementById('dBtantoushaName');
+    let dBshinseishaNameInput = document.getElementById('dBshinseishaName');
     let dBHiyouTotal1Input = document.getElementById('dBHiyouTotal1')
+    let returnButton = document.getElementById('returnpage');
     let nextButton = document.getElementById('next');
     nextButton.style.backgroundColor = 'red';
 
@@ -642,6 +645,7 @@
     let isdBBukken_KozoValid =  false;
     let isdBBukken_TatekataKodateKeishikiValid =  false;
     let isdBNyukyoYoteiDateYearValid =  false;
+    let isdBJutakuYotoValid=  false;
     let isdBBukken_KojiKanryoDate_YearValid =  false;
     let isdBShikinDateTochiShikinYearValid =  false;
     let isdBShikinDateChukanShikinYearValid =  false;
@@ -651,10 +655,23 @@
     let isdBShikinDateChukanShikinMonthValid =  false;
     let isdBShikinDateSaishuShikinMonthValid =  false;
     let isdBShikinDateSaishuShikinYearValid =  false;
-
-
-
-
+    let isdBChukaiHanbaiTantoshaNameSeiValid = false;
+    let isdBHiyouKensetsuHiValid = false;
+    let isdBHiyouTochiSyotokuHiValid = false;
+    let isdBChukaiHanbaiTantoshaNameMeiValid = false;
+    let isdBKariireGakuKingakuValid = false;
+    let isdBKariireGakuKinriValid = false;
+    let isdBKariireGakuHensaiKikanValid = false;
+    let isdBHensaiHouhouValid = false;
+    let isdBHisaiShinzokuDokyoAriValid =  false;
+    let isdBSueokiKikanNoNensuValid =  false;
+    let isdBSonotaNameValid = false;
+    let isdBSonotaKingakuValid = false;
+    let isdBSonotaHensaiKikanValid = false;
+    // let isdBSonotaNenHensai12No1Valid =  true;
+    // let isdBHiyouTotalValid =  true;
+    // let isddBSogoKingakuValid =  true;
+   let isdBKinyuKikanNameValid = false;
     function disableNextButton() {
         nextButton.disabled = true;
         nextButton.style.backgroundColor = 'red'; // 设置禁用状态的按钮颜色
@@ -667,12 +684,48 @@
     }
 
     function setButtonStyle() {
-        if (isdBHisaijutakuShuruiValid && isdBHisaijutakuShoyuuValid && isdBHigaiJokyoValid&&isdBBukken_MensekiValid && isaPLBukkenAddressTodofukenValid && isdBBukkenShikichiNoShoyuKankeiValid &&isaPLBukkenAddressPostCode3Valid
-            &&isdBBukken_Tatemono_JutakuValid && isdBBukken_Tatemono_HiJutakuValid && isdBBukken_KozoValid
-            &&isdBBukken_TatekataKodateKeishikiValid&&isdBNyukyoYoteiDateYearValid&&isdBBukken_KojiKanryoDate_YearValid
-            &&isdBShikinDateTochiShikinYearValid && isdBShikinDateChukanShikinYearValid&&isdBBukken_KojiKanryoDate_MonthValid
-            &&isdBNyukyoYoteiDateMonthValid&&isdBShikinDateTochiShikinMonthValid &&isdBShikinDateChukanShikinMonthValid
-            &&isdBShikinDateSaishuShikinMonthValid&&isdBShikinDateSaishuShikinYearValid
+        if (isdBHisaijutakuShuruiValid
+            && isdBHisaijutakuShoyuuValid
+            && isdBHigaiJokyoValid
+            &&isdBBukken_MensekiValid
+            && isaPLBukkenAddressTodofukenValid
+            &&isaPLBukkenAddressPostCode3Valid
+            && isdBBukkenShikichiNoShoyuKankeiValid
+            &&isdBBukken_Tatemono_JutakuValid
+            && isdBBukken_Tatemono_HiJutakuValid
+            && isdBBukken_KozoValid
+            &&isdBBukken_TatekataKodateKeishikiValid
+            &&isdBNyukyoYoteiDateYearValid
+            &&isdBNyukyoYoteiDateMonthValid
+            &&isdBJutakuYotoValid
+            &&isdBBukken_KojiKanryoDate_YearValid
+            &&isdBShikinDateTochiShikinYearValid
+            &&isdBShikinDateChukanShikinYearValid
+            &&isdBBukken_KojiKanryoDate_MonthValid
+            // &&isdBNyukyoYoteiDateMonthValid
+            &&isdBShikinDateTochiShikinMonthValid
+            &&isdBShikinDateChukanShikinMonthValid
+            &&isdBShikinDateSaishuShikinMonthValid
+            &&isdBShikinDateSaishuShikinYearValid
+            &&isdBChukaiHanbaiTantoshaNameMeiValid
+            &&isdBChukaiHanbaiTantoshaNameSeiValid
+            &&isdBHiyouKensetsuHiValid
+            &&isdBHiyouTochiSyotokuHiValid
+
+            &&isdBKariireGakuKingakuValid
+            &&isdBKariireGakuKinriValid
+            &&isdBKariireGakuHensaiKikanValid
+            &&isdBHensaiHouhouValid
+            &&isdBHisaiShinzokuDokyoAriValid
+            &&isdBSueokiKikanNoNensuValid
+            &&isdBSonotaNameValid
+            && isdBSonotaKingakuValid
+            &&isdBSonotaHensaiKikanValid
+            &&isdBKinyuKikanNameValid
+            // &&isdBSonotaNenHensai12No1Valid
+            // &&isdBHiyouTotalValid
+            // &&isddBSogoKingakuValid
+
         ) {
             enableNextButton(); // 所有条件都满足，启用下一步按钮
         } else {
@@ -687,10 +740,11 @@
         if (dBHisaijutakuShuruiInput.value === "-1") {
             worrydBHisaijutakuShurui.innerHTML = '被災住宅の種類を選択してください';
             isdBHisaijutakuShuruiValid = false;
-        } if (dBHisaijutakuShuruiInput.value !== "-1"){
-            worrydBHisaijutakuShurui.innerHTML = null;
+        } else {
+            worrydBHisaijutakuShurui.innerHTML = '';
             isdBHisaijutakuShuruiValid = true;
         }
+        setButtonStyle();
     });
 
  //titile 2)被災住宅の所有等
@@ -702,6 +756,7 @@
             worrydBHisaijutakuShoyuu.innerHTML = null;
             isdBHisaijutakuShoyuuValid = true;
         }
+        setButtonStyle();
     });
 
     dBHisaijutakuShuruiInput.addEventListener('change',()=>{
@@ -722,26 +777,16 @@
 
     });
 
-
-
-    //
-    // dBHisaijutakuShoyuuInput.addEventListener('change',function () {
-    //     if (dBHisaijutakuShoyuuInput.value === '-1') {
-    //         worrydBHisaijutakuShoyuu.innerHTML = '被災住宅の所有等を選択してください';
-    //     } else {
-    //         worrydBHisaijutakuShoyuu.innerHTML = null;
-    //         enableNextButton();
-    //     }
-    // });
 //titile 3)被害状況
     dBHigaiJokyoInput.addEventListener("input", function() {
         if (dBHigaiJokyoInput.value == "-1") {
-            worrydBHigaiJokyo.innerHTML = '被災住宅の所有等を選択してください';
+            worrydBHigaiJokyo.innerHTML = '被害状況を選択してください';
             isdBHigaiJokyoValid = false;
         } if (dBHigaiJokyoInput.value !== "-1"){
             worrydBHigaiJokyo.innerHTML = null;
             isdBHigaiJokyoValid = true;
         }
+        setButtonStyle();
     });
 
     dBHigaiJokyoInput.addEventListener("input",function (){
@@ -751,17 +796,11 @@
             dBHigaiJokyoDaikiboHankaiOrHankaiInput.disabled = false;
         }
     });
-    // dBHisaijutakuShuruiInput.addEventListener('input',function (){
-    //
-    //     if(dBHisaijutakuShuruiInput.value==="-1"){
-    //         worrydBHisaijutakuShurui.innerHTML = '被災住宅の種類を選択してください';
-    //     }
-    // })
 
 
-    //TODO:02敷地状況机能实现
-    // 整数 3つ、小数点以下 2 桁
-    //titile:敷地の面積（㎡）
+//     //TODO:02敷地状況机能实现
+//     // 整数 3つ、小数点以下 2 桁
+//     //titile:敷地の面積（㎡）
     dBBukken_MensekiInput.addEventListener("blur", function() {
         // 获取输入框中的值
         const value = dBBukken_MensekiInput.value.trim();
@@ -770,7 +809,6 @@
         if (value === "") {
             worrydBBukken_Menseki.innerHTML = "面積を入力してください。";
             isdBBukken_MensekiValid = false;
-            return;
         }
 
         // 将值转换为浮点数，并截断至小数点后第二位
@@ -779,7 +817,6 @@
             dBBukken_MensekiInput.value = "0.00";
             worrydBBukken_Menseki.innerHTML = "建物の床面積_住宅部分は3桁まで、小数部は2桁まで入力してください。";
             isdBBukken_MensekiValid = false;
-            return;
         }
 
         // 检查整数部分是否为3位
@@ -787,12 +824,10 @@
         if (integerValue > 999) {
             worrydBBukken_Menseki.innerHTML = "建物の床面積_住宅部分は3桁まで、小数部は2桁まで入力してください。";
             isdBBukken_MensekiValid = false;
-            return;
         }else {
             worrydBBukken_Menseki.innerHTML = "";
             dBBukken_MensekiInput.value = floatValue.toFixed(2).padEnd(5, '0');
             isdBBukken_MensekiValid = true;
-            return value;
         }
         // 将输入框的值设为截断后的值，并自动补全小数位为00
         setButtonStyle();
@@ -867,57 +902,59 @@
         }
         setButtonStyle();
     });
-    // //titile:物件_敷地（所在地）_市郡
-    // dBBukkenAddressShigunInput.addEventListener('input',function(){
-    //     if (dBBukkenAddressShigunInput.value.length>255) {
-    //         worrydBBukkenAddressShigun.innerHTML = '物件_敷地（所在地）_市郡入力した名が長すぎます。255字内で再入力してください。';
-    //         disableNextButton();
-    //         return;
-    //     }
-    //     if (dBBukkenAddressShigunInput.value.trim() !== '') {
-    //         worrydBBukkenAddressShigun.innerHTML = '';
-    //         enableNextButton();
-    //         return dBBukkenAddressShigunInput.value;
-    //     }
-    //     return dBBukkenAddressShigunInput.value;
-    // });
-    // //titile:物件_敷地（所在地）_町村
-    // dBBukkenAddressChosonInput.addEventListener('input',function(){
-    //     if (dBBukkenAddressChosonInput.value.length>255) {
-    //         worrydBBukkenAddressChoson.innerHTML = '物件_敷地（所在地）_町村入力した名が長すぎます。255字内で再入力してください。';
-    //         disableNextButton();
-    //     }
-    //     if (dBBukkenAddressChosonInput.value.length<255) {
-    //         worrydBBukkenAddressChoson.innerHTML = '';
-    //         enableNextButton();
-    //         return dBBukkenAddressShigunInput.value;
-    //     }
-    // });
-    // //titile:物件_敷地（所在地）_番地
-    // aPLBukkenAddressBanchiInput.addEventListener('input',function(){
-    //     if (aPLBukkenAddressBanchiInput.value.length>15) {
-    //         worryaPLBukkenAddressBanchi.innerHTML = '物件_敷地（所在地）_番地入力した名が長すぎます。255字内で再入力してください。';
-    //         disableNextButton();
-    //     }
-    //     if (aPLBukkenAddressBanchiInput.value.length<15) {
-    //         worryaPLBukkenAddressBanchi.innerHTML = '';
-    //         enableNextButton();
-    //         return dBBukkenAddressShigunInput.value;
-    //     }
-    // });
+//     // //titile:物件_敷地（所在地）_市郡
+//     // dBBukkenAddressShigunInput.addEventListener('input',function(){
+//     //     if (dBBukkenAddressShigunInput.value.length>255) {
+//     //         worrydBBukkenAddressShigun.innerHTML = '物件_敷地（所在地）_市郡入力した名が長すぎます。255字内で再入力してください。';
+//     //         disableNextButton();
+//     //         return;
+//     //     }
+//     //     if (dBBukkenAddressShigunInput.value.trim() !== '') {
+//     //         worrydBBukkenAddressShigun.innerHTML = '';
+//     //         enableNextButton();
+//     //         return dBBukkenAddressShigunInput.value;
+//     //     }
+//     //     return dBBukkenAddressShigunInput.value;
+//     // });
+//     // //titile:物件_敷地（所在地）_町村
+//     // dBBukkenAddressChosonInput.addEventListener('input',function(){
+//     //     if (dBBukkenAddressChosonInput.value.length>255) {
+//     //         worrydBBukkenAddressChoson.innerHTML = '物件_敷地（所在地）_町村入力した名が長すぎます。255字内で再入力してください。';
+//     //         disableNextButton();
+//     //     }
+//     //     if (dBBukkenAddressChosonInput.value.length<255) {
+//     //         worrydBBukkenAddressChoson.innerHTML = '';
+//     //         enableNextButton();
+//     //         return dBBukkenAddressShigunInput.value;
+//     //     }
+//     // });
+//     // //titile:物件_敷地（所在地）_番地
+//     // aPLBukkenAddressBanchiInput.addEventListener('input',function(){
+//     //     if (aPLBukkenAddressBanchiInput.value.length>15) {
+//     //         worryaPLBukkenAddressBanchi.innerHTML = '物件_敷地（所在地）_番地入力した名が長すぎます。255字内で再入力してください。';
+//     //         disableNextButton();
+//     //     }
+//     //     if (aPLBukkenAddressBanchiInput.value.length<15) {
+//     //         worryaPLBukkenAddressBanchi.innerHTML = '';
+//     //         enableNextButton();
+//     //         return dBBukkenAddressShigunInput.value;
+//     //     }
+//     // });
     //titile:物件_敷地（所在地）_郵便番号
-    aPLBukkenAddressPostCode3Input.addEventListener('input',function(){
-        if (aPLBukkenAddressPostCode3Input.value.length>15) {
+    aPLBukkenAddressPostCode3Input.addEventListener('input', function() {
+        if (aPLBukkenAddressPostCode3Input.value === '') {
+            worryaPLBukkenAddressPostCode3.innerHTML = '郵便番号を入力してください'; // 提示请输入邮编
+            isaPLBukkenAddressPostCode3Valid = false;
+        } else if (aPLBukkenAddressPostCode3Input.value.length > 15) {
             worryaPLBukkenAddressPostCode3.innerHTML = '物件_敷地（所在地）_郵便番号入力した名が長すぎます。15字内で再入力してください。';
-            isaPLBukkenAddressPostCode3Valid =  false;
-        }
-        if (aPLBukkenAddressPostCode3Input.value.length<15) {
+            isaPLBukkenAddressPostCode3Valid = false;
+        } else {
             worryaPLBukkenAddressPostCode3.innerHTML = '';
-            isaPLBukkenAddressPostCode3Valid =  true;
-            return dBBukkenAddressShigunInput.value;
+            isaPLBukkenAddressPostCode3Valid = true;
         }
         setButtonStyle();
     });
+
     //titile:敷地の所有関係
     dBBukkenShikichiNoShoyuKankeiInput.addEventListener("input", function() {
         if (dBBukkenShikichiNoShoyuKankeiInput.value == "-1") {
@@ -929,15 +966,15 @@
         }
         setButtonStyle();
     });
-    //titile:建物の床面積_住宅部分
+//     //titile:建物の床面積_住宅部分
     dBBukken_Tatemono_JutakuInput.addEventListener("blur", function() {
         // 获取输入框中的值
         const value = dBBukken_Tatemono_JutakuInput.value.trim();
 
         // 如果值为空，则将输入框的值设为0.00
         if (value === "") {
-            worrydBBukken_Tatemono_Jutaku.innerHTML = "";
-            return;
+            worrydBBukken_Tatemono_Jutaku.innerHTML = "面積を入力してください";
+            isdBBukken_Tatemono_JutakuValid = false;
         }
 
         // 将值转换为浮点数，并截断至小数点后第二位
@@ -946,7 +983,6 @@
             dBBukken_Tatemono_JutakuInput.value = "0.00";
             worrydBBukken_Tatemono_Jutaku.innerHTML = "建物の床面積_住宅部分は3桁まで、小数部は2桁まで入力してください。";
             isdBBukken_Tatemono_JutakuValid =  false;
-            return;
         }
 
         // 检查整数部分是否为3位
@@ -954,28 +990,27 @@
         if (integerValue > 999) {
             worrydBBukken_Tatemono_Jutaku.innerHTML = "建物の床面積_住宅部分は3桁まで、小数部は2桁まで入力してください。";
             isdBBukken_Tatemono_JutakuValid =  false;
-            return;
         }
         else {
+            dBBukken_Tatemono_JutakuInput.value = floatValue.toFixed(2).padEnd(5, '0');
         worrydBBukken_Tatemono_Jutaku.innerHTML = "";
         isdBBukken_Tatemono_JutakuValid =  true;
         // 将输入框的值设为截断后的值，并自动补全小数位为00
-        dBBukken_Tatemono_JutakuInput.value = floatValue.toFixed(2).padEnd(5, '0');
+
         }
         setButtonStyle();
     });
 
-
-    //titile:非住宅部分
-
+//
+//     //titile:非住宅部分
     dBBukken_Tatemono_HiJutakuInput.addEventListener("blur", function() {
         // 获取输入框中的值
         const value = dBBukken_Tatemono_HiJutakuInput.value.trim();
 
         // 如果值为空，则将输入框的值设为0.00
         if (value === "") {
-            worrydBBukken_Tatemono_HiJutaku.innerHTML = "";
-            return;
+            worrydBBukken_Tatemono_HiJutaku.innerHTML = "面積を入力してください";
+            isdBBukken_Tatemono_HiJutakuValid = false;
         }
 
         // 将值转换为浮点数，并截断至小数点后第二位
@@ -984,7 +1019,6 @@
             dBBukken_Tatemono_HiJutakuInput.value = "0.00";
             worrydBBukken_Tatemono_HiJutaku.innerHTML = "建物の床面積_住宅部分は3桁まで、小数部は2桁まで入力してください。";
             isdBBukken_Tatemono_HiJutakuValid = false;
-            return;
         }
 
         // 检查整数部分是否为3位
@@ -992,18 +1026,18 @@
         if (integerValue > 999) {
             worrydBBukken_Tatemono_HiJutaku.innerHTML = "建物の床面積_住宅部分は3桁まで、小数部は2桁まで入力してください。";
             isdBBukken_Tatemono_HiJutakuValid = false;
-            return;
         }else {
+            dBBukken_Tatemono_HiJutakuInput.value = floatValue.toFixed(2).padEnd(5, '0');
+            worrydBBukken_Tatemono_HiJutaku.innerHTML = "";
         isdBBukken_Tatemono_HiJutakuValid = true;
-        worrydBBukken_Tatemono_HiJutaku.innerHTML = "";
+
 
         // 将输入框的值设为截断后的值，并自动补全小数位为00
-        dBBukken_Tatemono_HiJutakuInput.value = floatValue.toFixed(2).padEnd(5, '0');
     }
         setButtonStyle();
     });
 
-    //titile:建物の構造（戸建形式）
+//     //titile:建物の構造（戸建形式）
     dBBukken_KozoInput.addEventListener("input", function() {
         if (dBBukken_KozoInput.value == "-1") {
             worrydBBukken_Kozo.innerHTML = '建物の構造（戸建形式）を選択してください';
@@ -1014,7 +1048,9 @@
         }
         setButtonStyle();
     });
-    //titile:建て方）
+
+
+//     //titile:建て方）
     dBBukken_TatekataKodateKeishikiInput.addEventListener("input", function() {
         if (dBBukken_TatekataKodateKeishikiInput.value == "-1") {
             worrydBBukken_TatekataKodateKeishiki.innerHTML = '建て方を選択してください';
@@ -1024,20 +1060,105 @@
             isdBBukken_TatekataKodateKeishikiValid =  true;
         }
         setButtonStyle();
-    });
-//titile:入居予定年（年）物件_工事完了予定年月_年
-    //入居予定年（年） 选择判断
+  });
+
+        //TODO:本段为自动计算近五年
+        const currentYear = new Date().getFullYear();
+        //本段为自动计算近五年
+        for (let i = 0; i < 5; i++) {
+            //物件_工事完了予定年月_年
+            const option = document.createElement('option');
+            option.value = currentYear + i;
+            option.innerText = currentYear + i;
+            document.getElementById('dBBukkenKojiKanryoDateYear').appendChild(option);
+            //入居予定年（年）
+            const option2 = document.createElement('option');
+            option2.value = currentYear + i;
+            option2.innerText = currentYear + i;
+            document.getElementById('dBNyukyoYoteiDateYear').appendChild(option2);
+            //資金の受取予定年月_土地先行資金_年
+            const option3 = document.createElement('option');
+            option3.value = currentYear + i;
+            option3.innerText = currentYear + i;
+            document.getElementById('dBShikinDateTochiShikinYear').appendChild(option3);
+            //資金の受取予定年月_中間資金_年
+            const option4 = document.createElement('option');
+            option4.value = currentYear + i;
+            option4.innerText = currentYear + i;
+            document.getElementById('dBShikinDateChukanShikinYear').appendChild(option4);
+
+            const option5 = document.createElement('option');
+            option5.value = currentYear + i;
+            option5.innerText = currentYear + i;
+            document.getElementById('dBShikinDateSaishuShikinYear').appendChild(option5);
+        }
+        //TODO:12个月
+        const currentMonth = 1;
+        // 动态生成选项
+        for (let i = 0; i < 12; i++) {
+            const option = document.createElement('option');
+            option.value = currentMonth + i;
+            option.innerText = currentMonth + i;
+            document.getElementById('dBNyukyoYoteiDateMonth').appendChild(option);
+
+            const option2 = document.createElement('option');
+            option2.value = currentMonth + i;
+            option2.innerText = currentMonth + i;
+            document.getElementById('dBBukkenKojiKanryoDateMonth').appendChild(option2);
+
+            const option3 = document.createElement('option');
+            option3.valuecurrentMonth + i;
+            option3.innerText = currentMonth + i;
+            document.getElementById('dBShikinDateTochiShikinMonth').appendChild(option3);
+
+            const option4 = document.createElement('option');
+            option4.value = currentMonth + i;
+            option4.innerText = currentMonth + i;
+            document.getElementById('dBShikinDateChukanShikinMonth').appendChild(option4);
+
+            const option5 = document.createElement('option');
+            option5.value = currentMonth + i;
+            option5.innerText = currentMonth + i;
+            document.getElementById('dBShikinDateSaishuShikinMonth').appendChild(option5);
+        }
+
+
+
+// //titile:入居予定年（年）
+
     dBNyukyoYoteiDateYearInput.addEventListener("input", function() {
         if (dBNyukyoYoteiDateYearInput.value == "-1") {
             worrydBNyukyoYoteiDateYear.innerHTML = '入居予定年（年）を選択してください';
             isdBNyukyoYoteiDateYearValid =  false;
         } if (dBNyukyoYoteiDateYearInput.value !== "-1"){
-            worrydBNyukyoYoteiDateYear.innerHTML = null;
+            worrydBNyukyoYoteiDateYear.innerHTML = '';
             isdBNyukyoYoteiDateYearValid =  true;
         }
         setButtonStyle();
     });
-//物件_工事完了予定年月_年 选择判断
+    //titile:入居予定月（月）
+    dBNyukyoYoteiDateMonthInput.addEventListener("input", function() {
+        if (dBNyukyoYoteiDateMonthInput.value == "-1") {
+            worrydBNyukyoYoteiDateMonth.innerHTML = '入居予定年（年）を選択してください';
+            isdBNyukyoYoteiDateMonthValid =  false;
+        } if (dBNyukyoYoteiDateMonthInput.value !== "-1"){
+            worrydBNyukyoYoteiDateMonth.innerHTML = '';
+            isdBNyukyoYoteiDateMonthValid =  true;
+        }
+        setButtonStyle();
+    });
+        //titile:住宅の用途
+        dBJutakuYotoInput.addEventListener("input", function() {
+            if (dBJutakuYotoInput.value == "-1") {
+                worrydBJutakuYoto.innerHTML = '敷地の所有関係を選択してください';
+                isdBJutakuYotoValid =  false;
+            } if (dBJutakuYotoInput.value !== "-1"){
+                worrydBJutakuYoto.innerHTML = null;
+                isdBJutakuYotoValid =  true;
+            }
+            setButtonStyle();
+        });
+ //titile:物件_工事完了予定年月_年 选择判断
     dBBukken_KojiKanryoDate_YearInput.addEventListener("input", function() {
         if (dBBukken_KojiKanryoDate_YearInput.value == "-1") {
             worrydBBukken_KojiKanryoDate_Year.innerHTML = '物件_工事完了予定年月_年を選択してください';
@@ -1049,7 +1170,19 @@
         setButtonStyle();
     });
 
-    //物資金の受取予定年月_土地先行資金_年选择判断
+        //titile:物件_工事完了予定年月_月
+        dBBukken_KojiKanryoDate_MonthInput.addEventListener("input", function() {
+            if (dBBukken_KojiKanryoDate_MonthInput.value == "-1") {
+                worrydBBukken_KojiKanryoDate_Month.innerHTML = '物件_工事完了予定年月_月を選択してください';
+                isdBBukken_KojiKanryoDate_MonthValid =  false;
+            } if (dBBukken_KojiKanryoDate_MonthInput.value !== "-1"){
+                worrydBBukken_KojiKanryoDate_Month.innerHTML = null;
+                isdBBukken_KojiKanryoDate_MonthValid =  true;
+            }
+            setButtonStyle();
+        });
+
+    //titile:物資金の受取予定年月_土地先行資金_年选择判断
     dBShikinDateTochiShikinYearInput.addEventListener("input", function() {
         if (dBShikinDateTochiShikinYearInput.value == "-1") {
             worrydBShikinDateTochiShikinYear.innerHTML = '物資金の受取予定年月_土地先行資金_年を選択してください';
@@ -1061,7 +1194,20 @@
         setButtonStyle();
     });
 
-    //資金の受取予定年月_中間資金_年_年选择判断
+     //titile:資金の受取予定年月_土地先行資金_月
+        dBShikinDateTochiShikinMonthInput.addEventListener("input", function() {
+            if (dBShikinDateTochiShikinMonthInput.value == "-1") {
+                worrydBShikinDateTochiShikinMonth.innerHTML = '資金の受取予定年月_土地先行資金_月を選択してください';
+                isdBShikinDateTochiShikinMonthValid =  false;
+            } if (dBShikinDateTochiShikinMonthInput.value !== "-1"){
+                worrydBShikinDateTochiShikinMonth.innerHTML = null;
+                isdBShikinDateTochiShikinMonthValid  =  true;
+            }
+            setButtonStyle();
+        });
+
+
+//     //titile:資金の受取予定年月_中間資金_年_年选择判断
     dBShikinDateChukanShikinYearInput.addEventListener("input", function() {
         if (dBShikinDateChukanShikinYearInput.value == "-1") {
             worrydBShikinDateChukanShikinYear.innerHTML = '資金の受取予定年月_中間資金_年を選択してください';
@@ -1072,7 +1218,20 @@
         }
         setButtonStyle();
     });
-    //資金の受取予定年月_最終資金_年
+
+        //titile:資金の受取予定年月_中間資金_月
+        dBShikinDateChukanShikinMonthInput.addEventListener("input", function() {
+            if (dBShikinDateChukanShikinMonthInput.value == "-1") {
+                worrydBShikinDateChukanShikinMonth.innerHTML = '資金の受取予定年月_土地先行資金_月を選択してください';
+                isdBShikinDateChukanShikinMonthValid =  false;
+            } if (dBShikinDateChukanShikinMonthInput.value !== "-1"){
+                worrydBShikinDateChukanShikinMonth.innerHTML = null;
+                isdBShikinDateChukanShikinMonthValid =  true;
+            }
+            setButtonStyle();
+        });
+
+    //titile:資金の受取予定年月_最終資金_年
     dBShikinDateSaishuShikinYearInput.addEventListener("input", function() {
         if (dBShikinDateSaishuShikinYearInput.value == "-1") {
             worrydBShikinDateSaishuShikinYear.innerHTML = '資金の受取予定年月_最終資金_年を選択してください';
@@ -1083,84 +1242,11 @@
         }
         setButtonStyle();
     });
-    //本段为自动计算近五年
-    const currentYear = new Date().getFullYear();
-    //本段为自动计算近五年
-    for (let i = 0; i < 5; i++) {
-        //物件_工事完了予定年月_年
-        const option = document.createElement('option');
-        option.value = currentYear + i;
-        option.innerText = currentYear + i;
-        document.getElementById('dBBukken_KojiKanryoDate_Year').appendChild(option);
-        //入居予定年（年）
-        const option2 = document.createElement('option');
-        option2.value = currentYear + i;
-        option2.innerText = currentYear + i;
-        document.getElementById('dBNyukyoYoteiDateYear').appendChild(option2);
-        //資金の受取予定年月_土地先行資金_年
-        const option3 = document.createElement('option');
-        option3.value = currentYear + i;
-        option3.innerText = currentYear + i;
-        document.getElementById('dBShikinDateTochiShikinYear').appendChild(option3);
-        //資金の受取予定年月_中間資金_年
-        const option4 = document.createElement('option');
-        option4.value = currentYear + i;
-        option4.innerText = currentYear + i;
-        document.getElementById('dBShikinDateChukanShikinYear').appendChild(option4);
 
-        const option5 = document.createElement('option');
-        option5.value = currentYear + i;
-        option5.innerText = currentYear + i;
-        document.getElementById('dBShikinDateSaishuShikinYear').appendChild(option5);
-    }
 
-    //titile: 物件_工事完了予定年月_月 資金の受取予定年月_土地先行資金_月資金の受取予定年月_中間資金_月
-    //入居予定月（月）
-    dBNyukyoYoteiDateMonthInput.addEventListener("input", function() {
-        if (dBNyukyoYoteiDateMonthInput.value == "-1") {
-            worrydBNyukyoYoteiDateMonth.innerHTML = '入居予定月（月）を選択してください';
-            isdBNyukyoYoteiDateMonthValid =  false;
-        } if (dBNyukyoYoteiDateMonthInput.value !== "-1"){
-            worrydBNyukyoYoteiDateMonth.innerHTML = null;
-            isdBNyukyoYoteiDateMonthValid =  true;
-        }
-        setButtonStyle();
-    });
-    //物件_工事完了予定年月_月
-    dBBukken_KojiKanryoDate_MonthInput.addEventListener("input", function() {
-        if (dBBukken_KojiKanryoDate_MonthInput.value == "-1") {
-            worrydBBukken_KojiKanryoDate_Month.innerHTML = '物件_工事完了予定年月_月を選択してください';
-            isdBBukken_KojiKanryoDate_MonthValid =  false;
-        } if (dBBukken_KojiKanryoDate_MonthInput.value !== "-1"){
-            worrydBBukken_KojiKanryoDate_Month.innerHTML = null;
-            isdBBukken_KojiKanryoDate_MonthValid =  true;
-        }
-        setButtonStyle();
-    });
-    //資金の受取予定年月_土地先行資金_月
-    dBShikinDateTochiShikinMonthInput.addEventListener("input", function() {
-        if (dBShikinDateTochiShikinMonthInput.value == "-1") {
-            worrydBShikinDateTochiShikinMonth.innerHTML = '資金の受取予定年月_土地先行資金_月を選択してください';
-            isdBShikinDateTochiShikinMonthValid =  false;
-        } if (dBShikinDateTochiShikinMonthInput.value !== "-1"){
-            worrydBShikinDateTochiShikinMonth.innerHTML = null;
-            isdBShikinDateTochiShikinMonthValid  =  true;
-        }
-        setButtonStyle();
-    });
-    //資金の受取予定年月_中間資金_月
-    dBShikinDateChukanShikinMonthInput.addEventListener("input", function() {
-        if (dBShikinDateChukanShikinMonthInput.value == "-1") {
-            worrydBShikinDateChukanShikinMonth.innerHTML = '資金の受取予定年月_土地先行資金_月を選択してください';
-            isdBShikinDateChukanShikinMonthValid =  false;
-        } if (dBShikinDateChukanShikinMonthInput.value !== "-1"){
-            worrydBShikinDateChukanShikinMonth.innerHTML = null;
-            isdBShikinDateChukanShikinMonthValid =  true;
-        }
-        setButtonStyle();
-    });
 
-    //資金の受取予定年月_最終資金_月
+
+    //titile:資金の受取予定年月_最終資金_月
     dBShikinDateSaishuShikinMonthInput.addEventListener("input", function() {
         if (dBShikinDateSaishuShikinMonthInput.value == "-1") {
             worrydBShikinDateSaishuShikinMonth.innerHTML = '資金の受取予定年月_土地先行資金_月を選択してください';
@@ -1171,63 +1257,93 @@
         }
         setButtonStyle();
     });
-    //12个月
-    const currentMonth = 1;
-    // 动态生成选项
-    for (let i = 0; i < 12; i++) {
-        const option = document.createElement('option');
-        option.value = currentMonth + i;
-        option.innerText = currentMonth + i;
-        document.getElementById('dBNyukyoYoteiDateMonth').appendChild(option);
 
-        const option2 = document.createElement('option');
-        option2.value = currentMonth + i;
-        option2.innerText = currentMonth + i;
-        document.getElementById('dBBukken_KojiKanryoDate_Month').appendChild(option2);
+//     //TODO:資金の受取予定年月
+    dBShikinDateChukanShikinYearInput.onchange =dBShikinDateChukanShikinMonthInput.onchange = function() {
+        let xianxing = dBShikinDateTochiShikinYearInput.value  + dBShikinDateTochiShikinMonthInput.value;
+        let zhongjian =dBShikinDateChukanShikinYearInput.value + dBShikinDateChukanShikinMonthInput.value;
+        //let zuizhong = parseInt(dBShikinDateSaishuShikinYearInput.value)  + parseInt(dBShikinDateSaishuShikinMonthInput.value)*100;
 
-        const option3 = document.createElement('option');
-        option3.valuecurrentMonth + i;
-        option3.innerText = currentMonth + i;
-        document.getElementById('dBShikinDateTochiShikinMonth').appendChild(option3);
+        if (xianxing > zhongjian) {
+            worrydBShikinDateTochiShikinYear.innerHTML = '先行小于中间';
+            isdBShikinDateTochiShikinYearValid = false;
+        } else {
+            worrydBShikinDateTochiShikinYear.innerHTML = '';
+            isdBShikinDateTochiShikinYearValid = true;
+        }
 
-        const option4 = document.createElement('option');
-        option4.value = currentMonth + i;
-        option4.innerText = currentMonth + i;
-        document.getElementById('dBShikinDateChukanShikinMonth').appendChild(option4);
+        // if (zhongjian > zuizhong) {
+        //     worrydBShikinDateChukanShikinYear.innerHTML = '中間資金の受取予定年月は、「最終資金の受取予定年月」より後の年月を指定できません';
+        //     isdBShikinDateChukanShikinYearValid = false;
+        // } else {
+        //     worrydBShikinDateChukanShikinYear.innerHTML = '';
+        //     isdBShikinDateChukanShikinYearValid = true;
+        // }
 
-        const option5 = document.createElement('option');
-        option5.value = currentMonth + i;
-        option5.innerText = currentMonth + i;
-        document.getElementById('dBShikinDateSaishuShikinMonth').appendChild(option5);
-    }
+       //  if (xianxing > zuizhong) {
+       //     worrydBShikinDateSaishuShikinYear.innerHTML = '土地先行資金の受取予定年月は、「最終資金の受取予定年月」より後の年月を指定できません';
+       //     isdBShikinDateSaishuShikinYearValid = false;
+       // } else {
+       //     worrydBShikinDateSaishuShikinYear.innerHTML = '';
+       //     isdBShikinDateSaishuShikinYearValid = true;
+       // }
+        setButtonStyle();
 
+        // 重置中間資金下拉框
+        //resetChukanShikinDropdown();
+    };
 
-    // dBHiyouKensetsuHiInput.addEventListener("input", function() {
-    //     var kensetsuHi = parseFloat(dBHiyouKensetsuHiInput.value) || 0;
-    //     var tochiSyotokuHi = parseFloat(dBHiyouTochiSyotokuHiInput.value) || 0;
-    //     dBHiyouTotalInput.textContent = (kensetsuHi + tochiSyotokuHi).toLocaleString();
-    // });
-    //
-    // dBHiyouTochiSyotokuHiInput.addEventListener("input", function() {
-    //     var kensetsuHi = parseFloat(dBHiyouKensetsuHiInput.value) || 0;
-    //     var tochiSyotokuHi = parseFloat(dBHiyouTochiSyotokuHiInput.value) || 0;
-    //     dBHiyouTotalInput.textContent = (kensetsuHi + tochiSyotokuHi).toLocaleString();
-    // });
+    dBShikinDateSaishuShikinMonthInput.onchange =dBShikinDateSaishuShikinYearInput.onchange = function() {
+        //let xianxing = parseInt(dBShikinDateTochiShikinYearInput.value)  + parseInt(dBShikinDateTochiShikinMonthInput.value)*100;
+        let zhongjian = dBShikinDateChukanShikinYearInput.value + dBShikinDateChukanShikinMonthInput.value;
+        let zuizhong = dBShikinDateSaishuShikinYearInput.value + dBShikinDateSaishuShikinMonthInput.value;
 
-    //TODO:04予定年月
+        // if (xianxing > zhongjian) {
+        //     worrydBShikinDateTochiShikinYear.innerHTML = '土地先行資金の受取予定年月は「中間資金の受取予定年月」より後の年月を指定できません';
+        //     isdBShikinDateTochiShikinYearValid = false;
+        // } else {
+        //     worrydBShikinDateTochiShikinYear.innerHTML = '';
+        //     isdBShikinDateTochiShikinYearValid = true;
+        // }
 
-    dBShikinDateSaishuShikinYearInput.disabled = true;
-    dBShikinDateSaishuShikinMonthInput.disabled = true;
-    dBShikinDateChukanShikinYearInput.addEventListener("change", function() {
-        dBShikinDateSaishuShikinYearInput.disabled = (dBShikinDateChukanShikinYearInput.value == -1);
-    });
+        if (zhongjian > zuizhong) {
+            worrydBShikinDateChukanShikinYear.innerHTML = '最终大于中介';
+            isdBShikinDateChukanShikinYearValid = false;
+        } else {
+            worrydBShikinDateChukanShikinYear.innerHTML = '';
+            isdBShikinDateChukanShikinYearValid = true;
+        }
 
-    dBShikinDateChukanShikinMonthInput.addEventListener("change", function() {
-        dBShikinDateSaishuShikinMonthInput.disabled = (dBShikinDateChukanShikinMonthInput.value == -1);
-    });
+        //if (xianxing > zuizhong) {
+        //   worrydBShikinDateSaishuShikinYear.innerHTML = '土地先行資金の受取予定年月は、「最終資金の受取予定年月」より後の年月を指定できません';
+        //   isdBShikinDateSaishuShikinYearValid = false;
+        // } else {
+        //    worrydBShikinDateSaishuShikinYear.innerHTML = '';
+        //    isdBShikinDateSaishuShikinYearValid = true;
+        // }
+        setButtonStyle();
 
+        // 重置中間資金下拉框
+        //resetChukanShikinDropdown();
+    };
 
-    //TODO:04工事請負事業者
+//     //TODO:04工事請負事業者
+    //titile:会社名称
+
+        dBKariireIninKaishaNameInput.addEventListener('input', function() {
+            if (dBKariireIninKaishaNameInput.value === '') {
+                worrydBKariireIninKaishaName.innerHTML = '会社名称を入力してください'; // 提示请输入邮编
+            } else if (dBKariireIninKaishaNameInput.value.length > 100) {
+                worrydBKariireIninKaishaName.innerHTML = '会社名称入力した名が長すぎます。15字内で再入力してください。';
+                isdBKariireIninKaishaNameValid = false;
+            } else {
+                worrydBKariireIninKaishaName.innerHTML = '';
+                isdBKariireIninKaishaNameValid = true;
+                return dBKariireIninKaishaNameInput.value;
+            }
+            setButtonStyle();
+        });
+
     function zenkana2Hankana(str) {
         let kanaMap = {
             "ガ": "ｶﾞ", "ギ": "ｷﾞ", "グ": "ｸﾞ", "ゲ": "ｹﾞ", "ゴ": "ｺﾞ",
@@ -1258,31 +1374,58 @@
             .replace(/゛/g, 'ﾞ')
             .replace(/゜/g, 'ﾟ');
     };
+
+
     dBChukaiHanbaiNameKanaInput.oninput = function () {
         dBChukaiHanbaiNameKanaInput.value=zenkana2Hankana(dBChukaiHanbaiNameKanaInput.value)
     };
 
-    dBChukaiHanbaiNameKanaInput.addEventListener('input',function (){
-        let check2 = /^[ｧ-ﾝﾞﾟ]+$/;
-        if(check2.test(dBChukaiHanbaiNameKanaInput.value)===false){
-            worrydBChukaiHanbaiNameKana.innerHTML = "セイをカタカナでで入力してください";
-            //alert('セイをカタカナでで入力してください')
+    //TODO:05担当者名
+    dBChukaiHanbaiTantoshaNameMeiInput.addEventListener('input', function() {
+        if (dBChukaiHanbaiTantoshaNameMeiInput.value === '') {
+            worrydBChukaiHanbaiTantoshaNameMei.innerHTML = '仲介業者又は販売代理_担当者名_名入力してください'; // 提示请输入邮编
+            isdBChukaiHanbaiTantoshaNameMeiValid = false;
+        } else if (dBChukaiHanbaiTantoshaNameMeiInput.value.length > 100) {
+            worrydBChukaiHanbaiTantoshaNameMei.innerHTML = '物件_敷地（所在地）_郵便番号入力した名が長すぎます。15字内で再入力してください。';
+            isdBChukaiHanbaiTantoshaNameMeiValid = false;
+        } else {
+            worrydBChukaiHanbaiTantoshaNameMei.innerHTML = '';
+            isdBChukaiHanbaiTantoshaNameMeiValid = true;
         }
-        if(check2.test(dBChukaiHanbaiNameKanaInput.value)===true){
-            worrydBChukaiHanbaiNameKana.innerHTML = "";
-            //alert('セイをカタカナでで入力してください')
-        }
+        setButtonStyle();
     });
 
-    //TODO:06建設に要する費用 机能实现
-    //5位整数
+    dBChukaiHanbaiTantoshaNameSeiInput.addEventListener('input', function() {
+        if (dBChukaiHanbaiTantoshaNameSeiInput.value === '') {
+            worrydBChukaiHanbaiTantoshaNameSei.innerHTML = '仲介業者又は販売代理_担当者名_名入力してください'; // 提示请输入邮编
+            isdBChukaiHanbaiTantoshaNameSeiValid = false;
+        } else if (dBChukaiHanbaiTantoshaNameSeiInput.value.length > 100) {
+            worrydBChukaiHanbaiTantoshaNameSei.innerHTML = '物件_敷地（所在地）_郵便番号入力した名が長すぎます。15字内で再入力してください。';
+            isdBChukaiHanbaiTantoshaNameSeiValid = false;
+        } else {
+            worrydBChukaiHanbaiTantoshaNameSei.innerHTML = '';
+            isdBChukaiHanbaiTantoshaNameSeiValid = true;
+        }
+        setButtonStyle();
+    });
+
+
+
+
+//     //TODO:06建設に要する費用 机能实现
+//     //5位整数
+    //titile:建設費
     dBHiyouKensetsuHiInput.addEventListener("input", function() {
         // 获取输入框中的值
         const value = dBHiyouKensetsuHiInput.value.trim();
 
         // 如果值为空，则不进行限制
         if (value === "") {
-            return;
+            worrydBHiyouKensetsuHi.innerHTML = '输入';
+            isdBHiyouKensetsuHiValid = false;
+        }else {
+            worrydBHiyouKensetsuHi.innerHTML = ''; // 清空提示信息
+            isdBHiyouKensetsuHiValid = true;
         }
 
         // 如果值超过了5位整数，则截断为5位整数
@@ -1292,18 +1435,25 @@
         }
 
         // 如果值不是数字，则将输入框的值设为0
-        if (!/^\d+$/.test(value)) {
-            dBHiyouKensetsuHiInput.value = "0";
-        }
+        // if (!/^\d+$/.test(value)) {
+        //     dBHiyouKensetsuHiInput.value = "0";
+        // }
+        setButtonStyle();
     });
-    //5位整数
+
+
+//     //titile:土地取得費
     dBHiyouTochiSyotokuHiInput.addEventListener("input", function() {
         // 获取输入框中的值
         const value = dBHiyouTochiSyotokuHiInput.value.trim();
 
         // 如果值为空，则不进行限制
         if (value === "") {
-            return;
+            worrydBHiyouTochiSyotokuHi.innerHTML = '输入';
+            isdBHiyouTochiSyotokuHiValid = false;
+        }else {
+            worrydBHiyouTochiSyotokuHi.innerHTML = ''; // 清空提示信息
+            isdBHiyouTochiSyotokuHiValid = true;
         }
 
         // 如果值超过了5位整数，则截断为5位整数
@@ -1313,11 +1463,12 @@
         }
 
         // 如果值不是数字，则将输入框的值设为0
-        if (!/^\d+$/.test(value)) {
-            dBHiyouTochiSyotokuHiInput.value = "0";
-        }
+        // if (!/^\d+$/.test(value)) {
+        //     dBHiyouTochiSyotokuHiInput.value = "0";
+        // }
+        setButtonStyle();
     });
-    //计算建筑总和
+    //titile:費用合計
     dBHiyouKensetsuHiInput.addEventListener('input', calculateTotal);
     dBHiyouTochiSyotokuHiInput.addEventListener('input', calculateTotal);
 
@@ -1337,9 +1488,10 @@
         }
         // 将总和赋值给"費用合計"这个input元素
     }
-
-
-    //TODO：07災害融資の借入希望額
+//
+//
+//     //TODO：07災害融資の借入希望額
+    //titile:借入希望額_借入金額
     //整数5位
     dBKariireGakuKingakuInput.addEventListener("input", function() {
         // 获取输入框中的值
@@ -1347,20 +1499,28 @@
 
         // 如果值为空，则不进行限制
         if (value === "") {
-            return;
+           worrydBKariireGakuKingaku.innerHTML = '借入希望額_借入金額を入力ください';
+            isdBKariireGakuKingakuValid = false;
+        }else {
+            worrydBKariireGakuKingaku.innerHTML = ''; // 清空提示信息
+            isdBKariireGakuKingakuValid = true;
         }
 
         // 如果值超过了5位整数，则截断为5位整数
         if (value.length > 5) {
             dBKariireGakuKingakuInput.value = value.substring(0, 5);//substring 是 JavaScript 中字符串对象的一个方法，用于截取字符串的一部分。
             // 它可以接受两个参数，第一个参数指定截取的起始位置，第二个参数（可选）指定截取的结束位置。
+            isdBKariireGakuKingakuValid = false;
         }
 
         // 如果值不是数字，则将输入框的值设为0
-        if (!/^\d+$/.test(value)) {
-            dBKariireGakuKingakuInput.value = "0";
-        }
+        // if (!/^\d+$/.test(value)) {
+        //     dBKariireGakuKingakuInput.value = "0";
+        // }
+        setButtonStyle();
     });
+
+//titile:借入希望額_金利(不能超过10.00)
    //金利は10.00％を超えられない。小数点第3位以下は切捨てください。小数点（2桁）が足りない場合は、自動的にゼロで埋められる
     dBKariireGakuKinriInput.addEventListener("blur", function() {
         // 获取输入框中的值
@@ -1368,15 +1528,19 @@
 
         // 如果值为空，则将输入框的值设为0.00
         if (value === "") {
-            dBKariireGakuKinriInput.value = "0.00";
-            return;
+            worrydBKariireGakuKinri.innerHTML = '借入希望額_金利を入力ください';
+            isdBKariireGakuKinriValid = false;
+
+        }else {
+            worrydBKariireGakuKinri.innerHTML = '';
+            isdBKariireGakuKinriValid = true;
         }
 
         // 将值转换为浮点数，并截断至小数点后第二位
         let floatValue = parseFloat(value);
         if (isNaN(floatValue)) {
             dBKariireGakuKinriInput.value = "0.00";
-            return;
+            isdBKariireGakuKinriValid = false;
         }
         //Math.min(floatValue, 10) 表示获取 floatValue 和 10 中的最小值。如果 floatValue 的值大于 10
         // ，则返回 10。如果 floatValue 的值小于或等于 10，则返回 floatValue 的值。
@@ -1384,11 +1548,13 @@
         floatValue = Math.min(floatValue, 10).toFixed(2);
 
         // 将输入框的值设为截断后的值，并自动补全小数位为00
-        dBKariireGakuKinriInput.value = floatValue.padEnd(5, '0');
+        dBKariireGakuKinriInput.value = floatValue.padEnd(4, '0');
+        setButtonStyle();
+
     });
 
 
-
+//titile:借入希望額_返済期間
 //整数2位
     dBKariireGakuHensaiKikanInput.addEventListener("input", function() {
         // 获取输入框中的值
@@ -1396,87 +1562,217 @@
 
         // 如果值为空，则不进行限制
         if (value === "") {
-            return;
+            worrydBKariireGakuHensaiKikan.innerHTML = '借入希望額_金利を入力ください';
+            isdBKariireGakuHensaiKikanValid = false;
+        }else {
+            worrydBKariireGakuHensaiKikan.innerHTML = '';
+            isdBKariireGakuHensaiKikanValid = true;
         }
 
         // 如果值超过了5位整数，则截断为5位整数
         if (value.length > 2) {
             dBKariireGakuHensaiKikanInput.value = value.substring(0, 2);//substring 是 JavaScript 中字符串对象的一个方法，用于截取字符串的一部分。
             // 它可以接受两个参数，第一个参数指定截取的起始位置，第二个参数（可选）指定截取的结束位置。
+            isdBKariireGakuHensaiKikanValid = false;
         }
 
         // 如果值不是数字，则将输入框的值设为0
-        if (!/^\d+$/.test(value)) {
-            dBKariireGakuHensaiKikanInput.value = "0";
-        }
-    });
-//自动计算金利
-    dBHensaiHouhouInput.addEventListener("change", function() {
-        const hensaiHouhou = dBHensaiHouhouInput.value;
-        const kinri = parseFloat(dBKariireGakuKinriInput.value);//借入希望額_金利(不能超过10.00)
-        const hensaiKikan = parseInt(dBKariireGakuHensaiKikanInput.value);//借入希望額_返済期間
-
-        if (hensaiHouhou === "01 元利均等返済") {
-            // 元利均等返済的计算
-            const nenkanHensaiGaku = (1000000 * kinri / 12 / 100) * Math.pow(1 + (kinri / 12 / 100), hensaiKikan * 12);
-           if(nenkanHensaiGaku>100000000){
-               worrydBHensaiHouhou.innerHTML='金利は10.00％を超えられない。小数点第3位以下は切捨てください。'
-               //alert("超过9位了哥")
-               dBKariireGakuNenHensai12No1Input.value = "上に正しい値を入力してください";
-           }else{
-               dBKariireGakuNenHensai12No1Input.value = nenkanHensaiGaku.toFixed(0);
-           }
-            //const limitedNenkanHensaiGaku = Math.min(nenkanHensaiGaku, 999999999);
-            //dBKariireGakuNenHensai12No1Input.value = limitedNenkanHensaiGaku.toFixed(0);
-        } else if (hensaiHouhou === "02 元金均等返済") {
-            // 元金均等返済的计算
-            const nenkanKingetsuHensaiGaku = 1000000 * kinri / 12 / 100 + 1000000 / (hensaiKikan * 12);
-            const limitednenkanKingetsuHensaiGaku = Math.min(nenkanKingetsuHensaiGaku, 999999999);
-            dBKariireGakuNenHensai12No1Input.value = limitednenkanKingetsuHensaiGaku.toFixed(0);
-        } else {
-            dBKariireGakuNenHensai12No1Input.value = "";
-        }
+        // if (!/^\d+$/.test(value)) {
+        //     dBKariireGakuHensaiKikanInput.value = "0";
+        //     isdBKariireGakuHensaiKikanValid = false;
+        // }
+        setButtonStyle();
     });
 
-    //TODO:08その他の借入内容(「その他の借入内容」の項目のいずれかを入力した場合、全ての項目を入力する必要があります)
+    //titile:借入希望額_年間返済額の1/12
+dBHensaiHouhouInput.addEventListener("change", function() {
+    const hensaiHouhou = dBHensaiHouhouInput.value;
+    const kinri = parseFloat(dBKariireGakuKinriInput.value);
+    const hensaiKikan = parseInt(dBKariireGakuHensaiKikanInput.value);
 
-
-    function checkInputs() {
-        if (dBSonotaNameInput.value && dBSonotaKingakuInput.value && dBSonotaHensaiKikanInput.value  && dBKinyuKikanNameInput.value) {
-            // 所有输入框都有值，清除提示并启用按钮
-            worrydBSonotaName.innerHTML = '';
-            worrydBSonotaKingaku.innerHTML = '';
-            worrydBSonotaHensaiKikan.innerHTML = '';
-            //worrydbSonotaNenHensai12No1.innerHTML = '';
-            //worrydBSogoKingaku.innerHTML = '';
-            worrydBKinyuKikanName.innerHTML = '';
-            enableNextButton();
+    if (hensaiHouhou === "01 元利均等返済") {
+        // 元利均等返済的计算
+        const nenkanHensaiGaku = (1000000 * kinri / 12 / 100) * Math.pow(1 + (kinri / 12 / 100), hensaiKikan * 12);
+        if (nenkanHensaiGaku > 100000000) {
+            worrydBHensaiHouhou.innerHTML = '金利は10.00％を超えられない。小数点第3位以下は切捨てください。';
+            dBKariireGakuNenHensai12No1Input.value = "上に正しい値を入力してください";
+            disableNextButton(); // 禁用下一步按钮
         } else {
-            // 有一个或多个输入框没有值，显示错误提示并禁用按钮
-            worrydBSonotaName.innerHTML = 'その他の借入内容の項目のいずれかを入力した場合、全ての項目を入力する必要があります';
-            worrydBSonotaKingaku.innerHTML = 'その他の借入内容の項目のいずれかを入力した場合、全ての項目を入力する必要があります';
-            worrydBSonotaHensaiKikan.innerHTML = 'その他の借入内容の項目のいずれかを入力した場合、全ての項目を入力する必要があります';
-            //worrydbSonotaNenHensai12No1.innerHTML = 'その他の借入内容の項目のいずれかを入力した場合、全ての項目を入力する必要があります';
-            //worrydBSogoKingaku.innerHTML = 'その他の借入内容の項目のいずれかを入力した場合、全ての項目を入力する必要があります';
-            worrydBKinyuKikanName.innerHTML = 'その他の借入内容の項目のいずれかを入力した場合、全ての項目を入力する必要があります';
-            disableNextButton();
+            dBKariireGakuNenHensai12No1Input.value = nenkanHensaiGaku.toFixed(0);
+            worrydBHensaiHouhou.innerHTML = '';
+            isdBHensaiHouhouValid = true;
+            setButtonStyle(); // 根据新的验证状态设置按钮样式
         }
+    } else if (hensaiHouhou === "02 元金均等返済") {
+        // 元金均等返済的计算
+        const nenkanKingetsuHensaiGaku = 1000000 * kinri / 12 / 100 + 1000000 / (hensaiKikan * 12);
+        const limitednenkanKingetsuHensaiGaku = Math.min(nenkanKingetsuHensaiGaku, 999999999);
+        dBKariireGakuNenHensai12No1Input.value = limitednenkanKingetsuHensaiGaku.toFixed(0);
+        worrydBHensaiHouhou.innerHTML = '';
+        isdBHensaiHouhouValid = true;
+        setButtonStyle(); // 根据新的验证状态设置按钮样式
+    } else if (hensaiHouhou === "-1") {
+        worrydBHensaiHouhou.innerHTML = '返済方法を選択ください';
+        isdBHensaiHouhouValid = false;
+        disableNextButton(); // 禁用下一步按钮
+    } else {
+        worrydBHensaiHouhou.innerHTML = '';
+        isdBHensaiHouhouValid = true;
+        setButtonStyle(); // 根据新的验证状态设置按钮样式
     }
+    });
+//titile:被災親族同居の有無
+    dBHisaiShinzokuDokyoAriInput.addEventListener("input", function() {
+        if (dBHisaiShinzokuDokyoAriInput.value == "-1") {
+            worrydBHisaiShinzokuDokyoAri.innerHTML = '被災親族同居の有無を選択してください';
+            isdBHisaiShinzokuDokyoAriValid =  false;
+        } if (dBHisaiShinzokuDokyoAriInput.value !== "-1"){
+            worrydBHisaiShinzokuDokyoAri.innerHTML = null;
+            isdBHisaiShinzokuDokyoAriValid =  true;
+        }
+        setButtonStyle();
+    });
+//titile:据置期間の年数
+    dBSueokiKikanNoNensuInput.addEventListener("input", function() {
+        if (dBSueokiKikanNoNensuInput.value === "-1") {
+            worrydBSueokiKikanNoNensu.innerHTML = '据置期間の年数を選択してください';
+            isdBSueokiKikanNoNensuValid =  false;
+        } if (dBSueokiKikanNoNensuInput.value !== "-1"){
+            worrydBSueokiKikanNoNensu.innerHTML = null;
+            isdBSueokiKikanNoNensuValid =  true;
+        }
+        setButtonStyle();
+    });
 
+
+  // //TODO:08その他の借入内容(「その他の借入内容」の項目のいずれかを入力した場合、全ての項目を入力する必要があります)
+    function checkInputs() {
+        const isAnyInputEmpty = (
+            dBSonotaNameInput.value === "" ||
+            dBSonotaKingakuInput.value === "" ||
+            dBSonotaHensaiKikanInput.value === "" ||
+            dBKinyuKikanNameInput.value === ""
+
+        );
+
+        const isMatchingValues = (dBHiyouTotal1Input.value === dBSogoKingakuInput.value);
+
+        if (!isAnyInputEmpty && isMatchingValues) {
+            // 所有输入框都有值且两个输入框的值相等，清除提示并启用按钮
+            worrydBSonotaName.innerHTML = "";
+            worrydBSonotaKingaku.innerHTML = "";
+            worrydBSonotaHensaiKikan.innerHTML = "";
+            worrydBKinyuKikanName.innerHTML = "";
+            worrydBHiyouTotal1.innerHTML = "";
+            isdBSonotaNameValid = true;
+            isdBSonotaKingakuValid = true;
+            isdBSonotaHensaiKikanValid = true;
+            isdBKinyuKikanNameValid = true;
+            console.log("1111")
+            enableNextButton(); // 启用下一步按钮
+            //setButtonStyle();
+        } else {
+            // 有一个或多个输入框没有值或两个输入框的值不相等，显示错误提示并禁用按钮
+            worrydBSonotaName.innerHTML = "その他の借入内容の項目のいずれかを入力した場合、全ての項目を入力する必要があります";
+            worrydBSonotaKingaku.innerHTML = "その他の借入内容の項目のいずれかを入力した場合、全ての項目を入力する必要があります";
+            worrydBSonotaHensaiKikan.innerHTML = "その他の借入内容の項目のいずれかを入力した場合、全ての項目を入力する必要があります";
+            worrydBKinyuKikanName.innerHTML = "その他の借入内容の項目のいずれかを入力した場合、全ての項目を入力する必要があります";
+            worrydBHiyouTotal1.innerHTML = "请确保去再揭示相同";
+            isdBSonotaNameValid = false;
+            isdBSonotaKingakuValid = false;
+            isdBSonotaHensaiKikanValid = false;
+            isdBKinyuKikanNameValid =false;
+            //disableNextButton(); // 禁用下一步按钮
+        }
+        setButtonStyle();
+    }
     dBSonotaNameInput.addEventListener('input', checkInputs);
     dBSonotaKingakuInput.addEventListener('input', checkInputs);
     dBSonotaHensaiKikanInput.addEventListener('input', checkInputs);
-    dBSonotaNenHensai12No1Input.addEventListener('input', checkInputs);
-    dBSogoKingakuInput.addEventListener('input', checkInputs);
+    //dBSonotaNenHensai12No1Input.addEventListener('input', checkInputs);
+    //dBSogoKingakuInput.addEventListener('input', checkInputs);
     dBKinyuKikanNameInput.addEventListener('input', checkInputs);
+    //setButtonStyle();
 
-
-    dBSonotaNameInput.addEventListener("input", function() {
-        if (this.value.length > 100) {
-            alert("100以内を入力してください。")
-           // this.value = this.value.slice(0, 100);
-        }
-    });
+    //
+    // function checkInputs() {
+    //     const isAnyInputEmpty = (
+    //         dBSonotaNameInput.value === "" ||
+    //         dBSonotaKingakuInput.value === "" ||
+    //         dBSonotaHensaiKikanInput.value === "" ||
+    //         dBKinyuKikanNameInput.value === ""
+    //
+    //     );
+    //
+    //     const isMatchingValues = (dBHiyouTotal1Input.value === dBSogoKingakuInput.value);
+    //
+    //     if (!isAnyInputEmpty && isMatchingValues) {
+    //         // 所有输入框都有值且两个输入框的值相等，清除提示并启用按钮
+    //         worrydBSonotaName.innerHTML = "";
+    //         worrydBSonotaKingaku.innerHTML = "";
+    //         worrydBSonotaHensaiKikan.innerHTML = "";
+    //         worrydBKinyuKikanName.innerHTML = "";
+    //         worrydBHiyouTotal1.innerHTML = "";
+    //         isdBSonotaNameValid = true;
+    //         isdBSonotaKingakuValid = true;
+    //         isdBSonotaHensaiKikanValid = true;
+    //         isdBKinyuKikanNameValid = true;
+    //         enableNextButton(); // 启用下一步按钮
+    //         //setButtonStyle();
+    //     } else {
+    //         // 有一个或多个输入框没有值或两个输入框的值不相等，显示错误提示并禁用按钮
+    //         if (dBSonotaNameInput.value === "") {
+    //             worrydBSonotaName.innerHTML = "その他の借入内容の項目のいずれかを入力してください";
+    //         } else {
+    //             worrydBSonotaName.innerHTML = "";
+    //         }
+    //
+    //         if (dBSonotaKingakuInput.value === "") {
+    //             worrydBSonotaKingaku.innerHTML = "その他の借入内容の項目のいずれかを入力してください";
+    //         } else {
+    //             worrydBSonotaKingaku.innerHTML = "";
+    //         }
+    //
+    //         if (dBSonotaHensaiKikanInput.value === "") {
+    //             worrydBSonotaHensaiKikan.innerHTML = "その他の借入内容の項目のいずれかを入力してください";
+    //         } else {
+    //             worrydBSonotaHensaiKikan.innerHTML = "";
+    //         }
+    //
+    //         if (dBKinyuKikanNameInput.value === "") {
+    //             worrydBKinyuKikanName.innerHTML = "その他の借入内容の項目のいずれかを入力してください";
+    //         } else {
+    //             worrydBKinyuKikanName.innerHTML = "";
+    //         }
+    //
+    //         if (dBHiyouTotal1Input.value !== dBSogoKingakuInput.value) {
+    //             worrydBHiyouTotal1.innerHTML = "同じ値を入力してください";
+    //         } else {
+    //             worrydBHiyouTotal1.innerHTML = "";
+    //         }
+    //
+    //         isdBSonotaNameValid = !isAnyInputEmpty;
+    //         isdBSonotaKingakuValid = !isAnyInputEmpty;
+    //         isdBSonotaHensaiKikanValid = !isAnyInputEmpty;
+    //         isdBKinyuKikanNameValid = !isAnyInputEmpty;
+    //         disableNextButton(); // 禁用下一步按钮
+    //     }
+    //     setButtonStyle();
+    // }
+    // dBSonotaNameInput.addEventListener('input', checkInputs);
+    // dBSonotaKingakuInput.addEventListener('input', checkInputs);
+    // dBSonotaHensaiKikanInput.addEventListener('input', checkInputs);
+    // //dBSonotaNenHensai12No1Input.addEventListener('input', checkInputs);
+    // //dBSogoKingakuInput.addEventListener('input', checkInputs);
+    // dBKinyuKikanNameInput.addEventListener('input', checkInputs);
+    // //setButtonStyle();
+    //
+    // dBSonotaNameInput.addEventListener("input", function() {
+    //     if (this.value.length > 100) {
+    //         alert("100以内を入力してください。")
+    //        // this.value = this.value.slice(0, 100);
+    //     }
+    // });
     //五位整数
     dBSonotaKingakuInput.addEventListener("input",function (){
         // 获取输入框中的值
@@ -1484,41 +1780,45 @@
 
         // 如果值为空，则不进行限制
         if (value === "") {
-            return;
         }
-
         // 如果值超过了5位整数，则截断为5位整数
         if (value.length > 5) {
             dBSonotaKingakuInput.value = value.substring(0, 5);//substring 是 JavaScript 中字符串对象的一个方法，用于截取字符串的一部分。
             // 它可以接受两个参数，第一个参数指定截取的起始位置，第二个参数（可选）指定截取的结束位置。
+
         }
 
         // 如果值不是数字，则将输入框的值设为0
-        if (!/^\d+$/.test(value)) {
-            dBSonotaKingakuInput.value = "0";
-        }
+        // if (!/^\d+$/.test(value)) {
+        //     dBSonotaKingakuInput.value = "0";
+        // }
+
     });
 
     //二位整数
     dBSonotaHensaiKikanInput.addEventListener("input", function (){
         const value = dBSonotaHensaiKikanInput.value.trim();
         if (value === "") {
-            return;
+            //disableNextButton();
+        }else {
+            //enableNextButton();
         }
 
         // 如果值超过了5位整数，则截断为5位整数
         if (value.length > 2) {
             dBSonotaHensaiKikanInput.value = value.substring(0, 2);//substring 是 JavaScript 中字符串对象的一个方法，用于截取字符串的一部分。
             // 它可以接受两个参数，第一个参数指定截取的起始位置，第二个参数（可选）指定截取的结束位置。
+            //disableNextButton();
         }
 
         // 如果值不是数字，则将输入框的值设为0
-        if (!/^\d+$/.test(value)) {
-            dBSonotaHensaiKikanInput.value = "0";
-        }
+        // if (!/^\d+$/.test(value)) {
+        //     dBSonotaHensaiKikanInput.value = "0";
+        // }
+        //setButtonStyle();
     });
 
-    //算金利
+    // //titile:その他_年間返済額の1/12（円）算金利
     //dBSonotaKingakuInput.addEventListener('input', calculateTotalSonota);//その他_借入金額（万円）
     dBSonotaHensaiKikanInput.addEventListener('input', calculateTotalSonota);//その他_返済期間　（年）
     function calculateTotalSonota() {
@@ -1535,81 +1835,97 @@
     }
 
 
-    dBHiyouTotal1Input.addEventListener('input', calculateTotal1);
+    dBKariireGakuKingakuInput.addEventListener('input', calculateTotal1);
     dBSonotaKingakuInput.addEventListener('input', calculateTotal1);
-
+    //titile:災害融資の借入希望額、その他の借入内容（万円）
     function calculateTotal1() {
         // 将输入框的值转换成数字，如果无法转换则设为0
         // 计算总和parseInt(dBHiyouTotal1Input.value) || 0;
-        const total2 =  parseInt(dBHiyouTotal1Input.value) || 0;
+        const total2 =  parseInt(dBKariireGakuKingakuInput.value) || 0;
         const total3 =parseInt(dBSonotaKingakuInput.value) || 0;
         const total1 =total2+total3;
         dBSogoKingakuInput.value = total1;
-        }
-        // 将总和赋值给"費用合計"这个input元素
 
-    dBKinyuKikanNameInput.addEventListener('input',function (){
-        if(dBKinyuKikanNameInput.length>100){
-            dBKinyuKikanNameInput.innerHTML('100以下の字を入力してください。');
-        }
-    });
-    dBHisaijutakuShuruiInput.dispatchEvent(new Event('input'));
-    dBHisaijutakuShoyuuInput.dispatchEvent(new Event('input'));
-    dBHigaiJokyoInput.dispatchEvent(new Event('input'));
-    dBHigaiJokyoDaikiboHankaiOrHankaiInput.dispatchEvent(new Event('input'));
-    dBBukken_MensekiInput.dispatchEvent(new Event('input'));
-    aPLBukkenAddressTodofukenInput.dispatchEvent(new Event('input'));
-    dBBukkenAddressShigunInput.dispatchEvent(new Event('input'));
-    dBBukkenAddressChosonInput.dispatchEvent(new Event('input'));
-    aPLBukkenAddressBanchiInput.dispatchEvent(new Event('input'));
-    aPLBukkenAddressPostCode3Input.dispatchEvent(new Event('input'));
-    dBBousaiSyudanItenJigyoInput.dispatchEvent(new Event('input'));
-    dBBukkenShikichiNoShoyuKankeiInput.dispatchEvent(new Event('input'));
-    dBBukken_Tatemono_JutakuInput.dispatchEvent(new Event('input'));
-    dBBukken_Tatemono_HiJutakuInput.dispatchEvent(new Event('input'));
-    dBBukken_KozoInput.dispatchEvent(new Event('input'));
-    dBBukken_TatekataKodateKeishikiInput.dispatchEvent(new Event('input'));
-    dBNyukyoYoteiDateYearInput.dispatchEvent(new Event('input'));
-    dBNyukyoYoteiDateMonthInput.dispatchEvent(new Event('input'));
-    dBJutakuYotoInput.dispatchEvent(new Event('input'));
-    dBBukken_KojiKanryoDate_YearInput.dispatchEvent(new Event('input'));
-    dBBukken_KojiKanryoDate_MonthInput.dispatchEvent(new Event('input'));
-    dBShikinDateTochiShikinYearInput.dispatchEvent(new Event('input'));
-    dBShikinDateTochiShikinMonthInput.dispatchEvent(new Event('input'));
-    dBShikinDateChukanShikinYearInput.dispatchEvent(new Event('input'));
-    dBShikinDateChukanShikinMonthInput.dispatchEvent(new Event('input'));
-    dBShikinDateSaishuShikinYearInput.dispatchEvent(new Event('input'));
-    dBShikinDateSaishuShikinMonthInput.dispatchEvent(new Event('input'));
-    dBKariireIninKaishaNameInput.dispatchEvent(new Event('input'));
-    dBChukaiHanbaiNameKanaInput.dispatchEvent(new Event('input'));
-    dBChukaiHanbaiTantoshaNameMeiInput.dispatchEvent(new Event('input'));
-    dBChukaiHanbaiTantoshaNameSeiInput.dispatchEvent(new Event('input'));
-    dBHiyouKensetsuHiInput.dispatchEvent(new Event('input'));
-    dBHiyouTochiSyotokuHiInput.dispatchEvent(new Event('input'));
-    dBHiyouTotalInput.dispatchEvent(new Event('input'));
-    dBKariireGakuKingakuInput.dispatchEvent(new Event('input'));
-    dBKariireGakuKinriInput.dispatchEvent(new Event('input'));
-    dBKariireGakuHensaiKikanInput.dispatchEvent(new Event('input'));
-    dBKariireGakuNenHensai12No1Input.dispatchEvent(new Event('input'));
-    dBHensaiHouhouInput.dispatchEvent(new Event('input'));
-    dBHisaiShinzokuDokyoAriInput.dispatchEvent(new Event('input'));
-    dBSueokiKikanNoNensuInput.dispatchEvent(new Event('input'));
-    dBSonotaNameInput.dispatchEvent(new Event('input'));
-    dBSonotaKingakuInput.dispatchEvent(new Event('input'));
-    dBSonotaHensaiKikanInput.dispatchEvent(new Event('input'));
-    dBSonotaNenHensai12No1Input.dispatchEvent(new Event('input'));
-    dBSogoKingakuInput.dispatchEvent(new Event('input'));
-    dBKinyuKikanNameInput.dispatchEvent(new Event('input'));
-    //let dBtantoushaNameInput = document.getElementById('dBtantoushaName');
-    //let dBshinseishaNameInput = document.getElementById('dBshinseishaName');
-    dBHiyouTotal1Input.dispatchEvent(new Event('input'));
-    //nextButton = document.getElementById('next');
+    }
+    //初始化输入验证的标志变量
+
+
+//    //  dBHisaijutakuShuruiInput.dispatchEvent(new Event('input'));
+//    //  dBHisaijutakuShoyuuInput.dispatchEvent(new Event('input'));
+//    //  dBHigaiJokyoInput.dispatchEvent(new Event('input'));
+//    //  dBHigaiJokyoDaikiboHankaiOrHankaiInput.dispatchEvent(new Event('input'));
+//    //  dBBukken_MensekiInput.dispatchEvent(new Event('input'));
+//    //  aPLBukkenAddressTodofukenInput.dispatchEvent(new Event('input'));
+//    //  dBBukkenAddressShigunInput.dispatchEvent(new Event('input'));
+//    //  dBBukkenAddressChosonInput.dispatchEvent(new Event('input'));
+//    //  aPLBukkenAddressBanchiInput.dispatchEvent(new Event('input'));
+//    //  aPLBukkenAddressPostCode3Input.dispatchEvent(new Event('input'));
+//    //  dBBousaiSyudanItenJigyoInput.dispatchEvent(new Event('input'));
+//    //  dBBukkenShikichiNoShoyuKankeiInput.dispatchEvent(new Event('input'));
+//    //  dBBukken_Tatemono_JutakuInput.dispatchEvent(new Event('input'));
+//    //  dBBukken_Tatemono_HiJutakuInput.dispatchEvent(new Event('input'));
+//    //  dBBukken_KozoInput.dispatchEvent(new Event('input'));
+//    //  dBBukken_TatekataKodateKeishikiInput.dispatchEvent(new Event('input'));
+//    //  dBNyukyoYoteiDateYearInput.dispatchEvent(new Event('input'));
+//    //  dBNyukyoYoteiDateMonthInput.dispatchEvent(new Event('input'));
+//    //  dBJutakuYotoInput.dispatchEvent(new Event('input'));
+//    //  dBBukken_KojiKanryoDate_YearInput.dispatchEvent(new Event('input'));
+//    //  dBBukken_KojiKanryoDate_MonthInput.dispatchEvent(new Event('input'));
+//    //  dBShikinDateTochiShikinYearInput.dispatchEvent(new Event('input'));
+//    //  dBShikinDateTochiShikinMonthInput.dispatchEvent(new Event('input'));
+//    //  dBShikinDateChukanShikinYearInput.dispatchEvent(new Event('input'));
+//    //  dBShikinDateChukanShikinMonthInput.dispatchEvent(new Event('input'));
+//    //  dBShikinDateSaishuShikinYearInput.dispatchEvent(new Event('input'));
+//    //  dBShikinDateSaishuShikinMonthInput.dispatchEvent(new Event('input'));
+//    //  dBKariireIninKaishaNameInput.dispatchEvent(new Event('input'));
+//    //  dBChukaiHanbaiNameKanaInput.dispatchEvent(new Event('input'));
+//    //  dBChukaiHanbaiTantoshaNameMeiInput.dispatchEvent(new Event('input'));
+//    //  dBChukaiHanbaiTantoshaNameSeiInput.dispatchEvent(new Event('input'));
+//    //  dBHiyouKensetsuHiInput.dispatchEvent(new Event('input'));
+//    //  dBHiyouTochiSyotokuHiInput.dispatchEvent(new Event('input'));
+//    //  dBHiyouTotalInput.dispatchEvent(new Event('input'));
+//    //  dBKariireGakuKingakuInput.dispatchEvent(new Event('input'));
+//    //  dBKariireGakuKinriInput.dispatchEvent(new Event('input'));
+//    //  dBKariireGakuHensaiKikanInput.dispatchEvent(new Event('input'));
+//    //  dBKariireGakuNenHensai12No1Input.dispatchEvent(new Event('input'));
+//    //  dBHensaiHouhouInput.dispatchEvent(new Event('input'));
+//    //  dBHisaiShinzokuDokyoAriInput.dispatchEvent(new Event('input'));
+//    //  dBSueokiKikanNoNensuInput.dispatchEvent(new Event('input'));
+//    //  dBSonotaNameInput.dispatchEvent(new Event('input'));
+//    //  dBSonotaKingakuInput.dispatchEvent(new Event('input'));
+//    //  dBSonotaHensaiKikanInput.dispatchEvent(new Event('input'));
+//    //  dBSonotaNenHensai12No1Input.dispatchEvent(new Event('input'));
+//    //  dBSogoKingakuInput.dispatchEvent(new Event('input'));
+//    //  dBKinyuKikanNameInput.dispatchEvent(new Event('input'));
+//    //  dBtantoushaNameInput = document.getElementById('dBtantoushaName');
+//    // dBshinseishaNameInput = document.getElementById('dBshinseishaName');
+//    //  dBHiyouTotal1Input.dispatchEvent(new Event('input'));
+//
+//
+//     // var name = localStorage.getItem("dBtantoushaName");
+//     // if (name) {
+//     //     console.log("qqqq"+name)
+//     //     document.getElementById("name").innerHTML = name;
+//     // }
+//     //
+//     // var name = localStorage.getItem("dBshinseishaName");
+//     // if (name) {
+//     //     console.log("qwer"+name)
+//     //     document.getElementById("name1").innerHTML = name;
+//     // }
+//
+//
+//
+//
+//
+//
+//     //nextButton = document.getElementById('next');
     nextButton.addEventListener('click', () => {
         let dBHisaijutakuShurui = dBHisaijutakuShuruiInput.value.trim();
         let dBHisaijutakuShoyuu = dBHisaijutakuShoyuuInput.value.trim();
         let dBHigaiJokyo = dBHigaiJokyoInput.value.trim();
         let dBHigaiJokyoDaikiboHankaiOrHankai = dBHigaiJokyoDaikiboHankaiOrHankaiInput.value.trim();
-        let dBBukken_Menseki = dBBukken_MensekiInput.value.trim();
+        let dBBukkenMenseki = dBBukken_MensekiInput.value.trim();
         let aPLBukkenAddressTodofuken = aPLBukkenAddressTodofukenInput.value.trim();
         let dBBukkenAddressShigun = dBBukkenAddressShigunInput.value.trim();
         let dBBukkenAddressChoson = dBBukkenAddressChosonInput.value.trim();
@@ -1617,15 +1933,15 @@
         let aPLBukkenAddressPostCode3 = aPLBukkenAddressPostCode3Input.value.trim();
         let dBBousaiSyudanItenJigyo = dBBousaiSyudanItenJigyoInput.value.trim();
         let dBBukkenShikichiNoShoyuKankei = dBBukkenShikichiNoShoyuKankeiInput.value.trim();
-        let dBBukken_Tatemono_Jutaku = dBBukken_Tatemono_JutakuInput.value.trim();
-        let dBBukken_Tatemono_HiJutaku = dBBukken_Tatemono_HiJutakuInput.value.trim();
-        let dBBukken_Kozo = dBBukken_KozoInput.value.trim();
-        let dBBukken_TatekataKodateKeishiki = dBBukken_TatekataKodateKeishikiInput.value.trim();
+        let dBBukkenTatemonoJutaku = dBBukken_Tatemono_JutakuInput.value.trim();
+        let dBBukkenTatemonoHiJutaku = dBBukken_Tatemono_HiJutakuInput.value.trim();
+        let dBBukkenKozo = dBBukken_KozoInput.value.trim();
+        let dBBukkenTatekataKodateKeishiki = dBBukken_TatekataKodateKeishikiInput.value.trim();
         let dBNyukyoYoteiDateYear = dBNyukyoYoteiDateYearInput.value.trim();
         let dBNyukyoYoteiDateMonth = dBNyukyoYoteiDateMonthInput.value.trim();
         let dBJutakuYoto = dBJutakuYotoInput.value.trim();
-        let dBBukken_KojiKanryoDate_Year = dBBukken_KojiKanryoDate_YearInput.value.trim();
-        let dBBukken_KojiKanryoDate_Month = dBBukken_KojiKanryoDate_MonthInput.value.trim();
+        let dBBukkenKojiKanryoDateYear = dBBukken_KojiKanryoDate_YearInput.value.trim();
+        let dBBukkenKojiKanryoDateMonth = dBBukken_KojiKanryoDate_MonthInput.value.trim();
         let dBShikinDateTochiShikinYear = dBShikinDateTochiShikinYearInput.value.trim();
         let dBShikinDateTochiShikinMonth = dBShikinDateTochiShikinMonthInput.value.trim();
         let dBShikinDateChukanShikinYear = dBShikinDateChukanShikinYearInput.value.trim();
@@ -1634,7 +1950,7 @@
         let dBShikinDateSaishuShikinMonth = dBShikinDateSaishuShikinMonthInput.value.trim();
         let dBKariireIninKaishaName = dBKariireIninKaishaNameInput.value.trim();
         let dBChukaiHanbaiNameKana = dBChukaiHanbaiNameKanaInput.value.trim();
-        let dBChukaiHanbaiTantoshaNameMei= dBChukaiHanbaiTantoshaNameMeiInput.value.trim();
+        let dBChukaiHanbaiTantoshaNameMei = dBChukaiHanbaiTantoshaNameMeiInput.value.trim();
         let dBChukaiHanbaiTantoshaNameSei = dBChukaiHanbaiTantoshaNameSeiInput.value.trim();
         let dBHiyouKensetsuHi = dBHiyouKensetsuHiInput.value.trim();
         let dBHiyouTochiSyotokuHi = dBHiyouTochiSyotokuHiInput.value.trim();
@@ -1652,6 +1968,8 @@
         let dBSonotaNenHensai12No1 = dBSonotaNenHensai12No1Input.value.trim();
         let dBSogoKingaku = dBSogoKingakuInput.value.trim();
         let dBKinyuKikanName = dBKinyuKikanNameInput.value.trim();
+        // let  dBtantoushaName= dBtantoushaNameInput.value;
+        // let dBshinseishaName=dBshinseishaNameInput.value;
         console.log("111" + dBHisaijutakuShurui)
 
 
@@ -1663,81 +1981,85 @@
         // }
 
 
-        fetch('/Hisai/Hisaiadd', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                dBHisaijutakuShurui,
-                dBHisaijutakuShoyuu,
-                dBHigaiJokyo,
-                dBHigaiJokyoDaikiboHankaiOrHankai,
-                dBBukken_Menseki,
-                aPLBukkenAddressTodofuken,
-                dBBukkenAddressShigun,
-                dBBukkenAddressChoson,
-                aPLBukkenAddressBanchi,
-                aPLBukkenAddressPostCode3,
-                dBBousaiSyudanItenJigyo,
-                dBBukkenShikichiNoShoyuKankei,
-                dBBukken_Tatemono_Jutaku,
-                dBBukken_Tatemono_HiJutaku,
-                dBBukken_Kozo,
-                dBBukken_TatekataKodateKeishiki,
-                dBNyukyoYoteiDateYear,
-                dBNyukyoYoteiDateMonth,
-                dBJutakuYoto,
-                dBBukken_KojiKanryoDate_Year,
-                dBBukken_KojiKanryoDate_Month,
-                dBShikinDateTochiShikinYear,
-                dBShikinDateTochiShikinMonth,
-                dBShikinDateChukanShikinYear,
-                dBShikinDateChukanShikinMonth,
-                dBShikinDateSaishuShikinYear,
-                dBShikinDateSaishuShikinMonth,
-                dBKariireIninKaishaName,
-                dBChukaiHanbaiNameKana,
-                dBChukaiHanbaiTantoshaNameMei,
-                dBChukaiHanbaiTantoshaNameSei,
-                dBHiyouKensetsuHi,
-                dBHiyouTochiSyotokuHi,
-                dBHiyouTotal,
-                dBKariireGakuKingaku,
-                dBKariireGakuKinri,
-                dBKariireGakuHensaiKikan,
-                dBKariireGakuNenHensai12No1,
-                dBHensaiHouhou,
-                dBHisaiShinzokuDokyoAri,
-                dBSueokiKikanNoNensu,
-                dBSonotaName,
-                dBSonotaKingaku,
-                dBSonotaHensaiKikan,
-                dBSonotaNenHensai12No1,
-                dBSogoKingaku,
-                dBKinyuKikanName,
-                })
-        })
-            // 所有信息都正确的话就传输到数据库
-            // すべての情報が正しい場合は、データベースに転送する
-            .then(response => {
-                if (response.ok) {
-                    alert('保存成功');
-
-                } else {
-                    return response.text().then(text => {
-                        throw new Error(text)
-                    });
-                }
+            fetch('/Hisai/Hisaiadd', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    //
+                    dBHisaijutakuShurui,
+                    dBHisaijutakuShoyuu,
+                    dBHigaiJokyo,
+                    dBHigaiJokyoDaikiboHankaiOrHankai,
+                    dBBukkenMenseki,
+                    aPLBukkenAddressTodofuken,
+                    dBBukkenAddressShigun,
+                    dBBukkenAddressChoson,
+                    aPLBukkenAddressBanchi,
+                    aPLBukkenAddressPostCode3,
+                    dBBousaiSyudanItenJigyo,
+                    dBBukkenShikichiNoShoyuKankei,
+                    dBBukkenTatemonoJutaku,
+                    dBBukkenTatemonoHiJutaku,
+                    dBBukkenKozo,
+                    dBBukkenTatekataKodateKeishiki,
+                    dBNyukyoYoteiDateYear,
+                    dBNyukyoYoteiDateMonth,
+                    dBJutakuYoto,
+                    dBBukkenKojiKanryoDateYear,
+                    dBBukkenKojiKanryoDateMonth,
+                    dBShikinDateTochiShikinYear,
+                    dBShikinDateTochiShikinMonth,
+                    dBShikinDateChukanShikinYear,
+                    dBShikinDateChukanShikinMonth,
+                    dBShikinDateSaishuShikinYear,
+                    dBShikinDateSaishuShikinMonth,
+                    dBKariireIninKaishaName,
+                    dBChukaiHanbaiNameKana,
+                    dBChukaiHanbaiTantoshaNameMei,
+                    dBChukaiHanbaiTantoshaNameSei,
+                    dBHiyouKensetsuHi,
+                    dBHiyouTochiSyotokuHi,
+                    dBHiyouTotal,
+                    dBKariireGakuKingaku,
+                    dBKariireGakuKinri,
+                    dBKariireGakuHensaiKikan,
+                    dBKariireGakuNenHensai12No1,
+                    dBHensaiHouhou,
+                    dBHisaiShinzokuDokyoAri,
+                    dBSueokiKikanNoNensu,
+                    dBSonotaName,
+                    dBSonotaKingaku,
+                    dBSonotaHensaiKikan,
+                    dBSonotaNenHensai12No1,
+                    dBSogoKingaku,
+                    dBKinyuKikanName
+                    // dBtantoushaName,
+                    // dBshinseishaName
+                    })
             })
-            // 如果存在有问题的输入, 就alert提示错误
-            // 入力に異常がある場合、エラーで警告する
-            .catch(error => {
-                alert(error.message);
-            });
-    });
+                // 所有信息都正确的话就传输到数据库
+                // すべての情報が正しい場合は、データベースに転送する
+                .then(response => {
+                    if (response.ok) {
+                        alert('保存成功');
 
-
+                    } else {
+                        return response.text().then(text => {
+                            throw new Error(text)
+                        });
+                    }
+                })
+                // 如果存在有问题的输入, 就alert提示错误
+                // 入力に異常がある場合、エラーで警告する
+                .catch(error => {
+                    alert(error.message);
+                });
+        });
+    returnButton.addEventListener('click', () =>  {
+        window.location.href="wetechpractiesdemo02.html"
+    })
 </script>
 </body>
 </html>

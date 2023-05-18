@@ -13,6 +13,5 @@ public interface ProviderMapper {
             " VALUES" +
             "(#{cpTanpoMono},#{cpNameMei},#{cpNameSei},#{cpNamekataSei},#{cpNamekataMei},#{cpGander},#{cpBirthDateYear},#{cpBirthDate},#{cpMoushikomi },#{cpRentaiSaimushaToOnaji}," +
             "#{cpPhone},#{cpHonninShokugyoCode},#{cpHonninKinmusakiName},#{cpReason},#{cpSame})")
-
-    void insert(CollateralProvider collateralProvider);
+    Integer insert(CollateralProvider collateralProvider);
 }

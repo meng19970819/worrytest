@@ -12,5 +12,7 @@ public interface UserMapper {
             " VALUES" +
             "(#{cpNameSei},#{cpNameMei},#{cpNameSeiKana},#{cpNameMeiKana},#{cpAlphLastnmae},#{cpAlphFirstname},#{cpCountry},#{cpOtherCountry},#{cpSex},#{cpBirthDate}," +
             "#{cpDenwa},#{cpPhone},#{cpShokugyoCode},#{cpKinmusakiName})")
-    void insert(User user);
+    Integer insert(User user);
+
 }
+
